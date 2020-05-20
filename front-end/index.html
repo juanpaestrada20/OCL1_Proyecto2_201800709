@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Proyecto 2</title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -89,25 +89,41 @@
         </div>
       </div>
       <br />
-        <div class="row mb-4 justify-content-center mx-4">
-      <div class="col-4 col-xs-5 .col-sm-6 .col-lg-4 w-60">
-        <button
-          type="button"
-          class="btn btn-dark btn-lg btn-block px-4 mx-2"
-        >
-          Traducir Codigo
-        </button>
+      <div class="row mb-4 justify-content-center mx-4">
+        <div class="col-4 col-xs-5 .col-sm-6 .col-lg-4 w-60">
+          <button
+            type="button"
+            class="btn btn-dark btn-lg btn-block px-4 mx-2"
+            onclick="getText()"
+          >
+            Traducir Codigo
+          </button>
+        </div>
+        <div class="col-4 col-xs-5 .col-sm-6 .col-lg-4 w-60">
+          <button
+            type="button"
+            class="btn btn-dark btn-lg btn-block px-4 mx-2"
+            onclick="clearEverything()"
+          >
+            Clear
+          </button>
+        </div>
       </div>
-      <div class="col-4 col-xs-5 .col-sm-6 .col-lg-4 w-60">
-        <button
-          type="button"
-          class="btn btn-dark btn-lg btn-block px-4 mx-2"
-        >
-          Clear
-        </button>
+
+      <div class="row">
+        <div class="col">
+          <h4 style="color: #fff;">Salida:</h4>
+          <textarea
+            name="salida"
+            id="salida"
+            cols="65"
+            rows="15"
+            style="background-color: rgb(66, 83, 100);"
+          ></textarea>
+        </div>
       </div>
     </div>
 
-    <script src="/assets/js/app.js"></script>
+    <script src="assets/js/app.js"></script>
   </body>
 </html>

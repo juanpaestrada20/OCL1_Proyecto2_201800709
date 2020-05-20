@@ -14,8 +14,6 @@ func index(w http.ResponseWriter, r *http.Request) {
 func main() {
 	fs := http.FileServer(http.Dir("assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
-	http.Handle("/css", http.FileServer(http.Dir("css/")))
-	http.Handle("/js", http.FileServer(http.Dir("js/")))
 	http.HandleFunc("/", index)
 	fmt.Printf("Listening...")
 	http.ListenAndServe(":8080", nil)
