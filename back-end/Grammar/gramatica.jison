@@ -17,7 +17,7 @@
 /* Tipo de Datos */
 "int"                               return 'TD_INT';
 "double"                            return 'TD_DOUBLE';
-"boolean"                           return 'TD_BOOLEAN;
+"boolean"                           return 'TD_BOOLEAN';
 "char"                              return 'TD_CHAR';
 "String"                            return 'TD_STRING';
 
