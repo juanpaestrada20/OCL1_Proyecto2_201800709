@@ -149,7 +149,7 @@ INICIOPRIMA
 
 IMPORTACIONES
         : PR_IMPORT IMPORTACION        { $$ = $2; } 
-        | PR_CLASS CLASE                { $$ = $2; }
+        | PR_CLASS CLASE               { $$ = $2; }
 ;
 
 IMPORTACION
@@ -157,7 +157,8 @@ IMPORTACION
 ;
 
 CLASE
-        : ID S_LLAVE_ABRE CUERPO S_LLAVE_CIERRA   { $$ = instruccionesAPI.nuevoClase($1, $3);}
+        : ID S_LLAVE_ABRE CUERPO S_LLAVE_CIERRA { $$ = instruccionesAPI.nuevoClase($1, $3);}
+        | ID S_LLAVE_ABRE S_LLAVE_CIERRA        { $$ = instruccionesAPI.nuevoClase($1, undefined);}
 ;
 
 CUERPO
@@ -187,11 +188,11 @@ DECLARACIONPRIMA
 FUNCIONES 
         : TIPO_DATO ID PARAMETROS CUERPO_METODO                                 { $$ = instruccionesAPI.nuevoFuncion($1, $2, $3, $4); }
         | PR_VOID ID PARAMETROS CUERPO_METODO                                   { $$ = instruccionesAPI.nuevoMetodo($2, $3, $4); }
-        | POR_VOID PR_MAIN S_PARENTESIS_ABRE S_PARENTESIS_CIERRA CUERPO_METODO  { $$ = instruccionesAPI.nuevoMetodo($2, undefined, $4); }
+        | PR_VOID PR_MAIN S_PARENTESIS_ABRE S_PARENTESIS_CIERRA CUERPO_METODO  { $$ = instruccionesAPI.nuevoMetodo($2, undefined, $4); }
 ;
 
 PARAMETROS
-        : S_PARENTESIS_ABRE LISTA_PARAMETRO S_PARENTESIS_CIERRA { $$ = [$2]; }
+        : S_PARENTESIS_ABRE LISTA_PARAMETRO S_PARENTESIS_CIERRA { $$ = $2; }
         | S_PARENTESIS_ABRE S_PARENTESIS_CIERRA                 { $$ = undefined; }
 ;
 
@@ -205,7 +206,7 @@ PARAMETRO
 ;
 
 CUERPO_METODO
-        : S_LLAVE_ABRE INSTRUCCIONES S_LLAVE_CIERRA     { $$ = [$2]; }
+        : S_LLAVE_ABRE INSTRUCCIONES S_LLAVE_CIERRA     { $$ = $2; }
         | S_LLAVE_ABRE S_LLAVE_CIERRA                   { $$ = undefined; }
 ;
 
@@ -215,7 +216,7 @@ INSTRUCCIONES
 ;
 
 INSTRUCCION
-        : DECLARACION   { $$ = $1; }
+        : DECLARACIONES { $$ = $1; }
         | ASIGNACION    { $$ = $1; }
         | FUNCION       { $$ = $1; }
         | IMPRESION     { $$ = $1; }
@@ -288,17 +289,17 @@ DO_WHILE
 ;
 
 FOR     
-        : PR_FOR S_PARENTESIS_ABRE ASIGNACION_FOR S_PUNTOCOMA EXPRESION S_PUNTOCOMA CAMBIO_VALOR S_PARENTESIS_CIERRA CUERPO_METODO { $$ = instruccionesAPI.nuevoFor($3, $5, $7, $9); }
+        : PR_FOR S_PARENTESIS_ABRE ASIGNACION_FOR  EXPRESION S_PUNTOCOMA CAMBIO_VALOR S_PARENTESIS_CIERRA CUERPO_METODO { $$ = instruccionesAPI.nuevoFor($3, $5, $7, $9); }
 ;
 
 ASIGNACION_FOR
-        : DECLARACION   { $$ = $1; }
+        : DECLARACIONES { $$ = $1; }
         | ASIGNACION    { $$ = $1; }
 ;
 
 CAMBIO_VALOR
-        : OP_AUMENTO    { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.AUMENTO); }
-        | OP_DECREMENTO { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.DECREMENTO); }
+        : ID OP_SUMA OP_SUMA    { $$ = instruccionesAPI.operacionUnaria(OPERATION_VALUE.AUMENTO); }
+        | ID OP_RESTA OP_RESTA  { $$ = instruccionesAPI.operacionUnaria(OPERATION_VALUE.DECREMENTO); }
 ;
 
 BREAK
@@ -343,9 +344,9 @@ EXPRESION
 	| EXPRESION OP_OR EXPRESION                             { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.OR); }
 	| EXPRESION OP_IGUALIGUAL EXPRESION                     { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.IGUAL_IGUAL); }
 	| EXPRESION OP_DISTINTO EXPRESION                       { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.DISTINTO); }
-	| EXPRESION OP_MENORIGUAL EXPRESION                     { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MENOR_IGUAL); }
+	| EXPRESION OP_MENOR S_IGUAL EXPRESION                  { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MENOR_IGUAL); }
 	| EXPRESION OP_MENOR EXPRESION                          { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MENOR_QUE); }
-	| EXPRESION OP_MAYORIGUAL EXPRESION                     { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MAYOR_IGUAL); }
+	| EXPRESION OP_MAYOR S_IGUAL EXPRESION                  { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MAYOR_IGUAL); }
 	| EXPRESION OP_MAYOR EXPRESION                          { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MAYOR_QUE); }
 	| S_PARENTESIS_ABRE EXPRESION S_PARENTESIS_CIERRA       { $$ = $2; }
 	| NUMERO        { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.NUMERO); }
@@ -353,6 +354,11 @@ EXPRESION
         | PR_FALSE      { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.BOOLEAN); }
         | CADENA        { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.CADENA); }
 	| CARACTER      { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.CARACTER); }
-        | FUNCION       { $$ = instruccionesAPI.nuevoValor($1, "FUNCION"); }
+        | FUNCION2      { $$ = instruccionesAPI.nuevoValor($1, "FUNCION"); }
 	| ID            { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.IDENTIFICADOR); }
+;
+
+FUNCION2
+        : ID S_PARENTESIS_ABRE EXPRESIONES S_PARENTESIS_CIERRA
+        | ID S_PARENTESIS_ABRE S_PARENTESIS_CIERRA
 ;
