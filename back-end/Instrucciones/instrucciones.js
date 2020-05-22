@@ -75,7 +75,31 @@ const SWITCH_OPTION_TYPE = {
   DEFAULT: "DEFAULT",
 };
 
-//
+// Errores
+var errores = [];
+const ERRORES = {
+  createJson: function (file) {
+    var fs = require("fs");
+    try {
+      fs.writeFileSync("errores.json", JSON.stringify(file, null, 2));
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  nuevoError: function (error) {
+    e.push(error);
+    return e;
+  },
+
+  error: function (error, fila, columna) {
+    return {
+      ERROR: error,
+      FILA: fila,
+      COLUMNA: columna,
+    };
+  },
+};
 
 /**
  * Esta función se encarga de crear objetos tipo Operación.

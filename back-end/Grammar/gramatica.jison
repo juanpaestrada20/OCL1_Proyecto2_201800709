@@ -1,4 +1,7 @@
 /* GRAMATICA PARA EL LENGUAJE JAVA */
+%{
+        const ERRORES			= require('../Instrucciones/instrucciones').ERRORES; 
+%}
 
 /*DEFINICION DE ANALIZADOR LEXICIO*/
 
@@ -94,8 +97,8 @@
 "false"                             return 'PR_FALSE';
 
 /* CADENA */
-\"[^\"]*\"				            { yytext = yytext.substr(1,yyleng-2); return 'CADENA'; }
-\'[^\']*\'				            { yytext = yytext.substr(1,yyleng-2); return 'CARACTER'; }
+\"[^\"]*\"	                    { yytext = yytext.substr(1,yyleng-2); return 'CADENA'; }
+\'[^\']*\'	                    { yytext = yytext.substr(1,yyleng-2); return 'CARACTER'; }
 
 /* ID */
 ([a-zA-Z_])[a-zA-Z0-9_]*            return 'ID';
@@ -116,7 +119,7 @@
 %{
 	const OPERATION_VALUE	= require('../Instrucciones/instrucciones').OPERATION_VALUE;
 	const VALUE_TYPES 		= require('../Instrucciones/instrucciones').VALUE_TYPES;
-	const TYPES			= require('../Instrucciones/instrucciones').TYPES; //para jalar el tipo de dato
+	const TYPES			= require('../Instrucciones/instrucciones').TYPES; 
 	const instruccionesAPI	= require('../Instrucciones/instrucciones').instruccionesAPI;
 %}
         
