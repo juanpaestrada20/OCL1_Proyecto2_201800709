@@ -57,6 +57,11 @@
 "%"                                 return 'OP_MODULO';
 "++"                                return 'OP_AUMENTO';
 "--"                                return 'OP_DECREMENTO';
+"+="                                return 'OP_SUMA_SIMPLIFICADA';
+"-="                                return 'OP_RESTA_SIMPLIFICADA';
+"*="                                return 'OP_MULTIPLICACION_SIMPLIFICADA';
+"/="                                return 'OP_DIVISION_SIMPLIFICADA';
+"%="                                return 'OP_MODULO_SIMPLIFICADA';
 
 /* Relacionales */
 "=="                                return 'OP_IGUALIGUAL';
@@ -108,6 +113,13 @@
 
 /lex
 
+        % {
+        const instruccionesAPI = require("../Instrucciones/instrucciones").instruccionesAPI;
+        const VALUE_TYPES = require("../Instrucciones/instrucciones").VALUE_TYPES;
+        const TYPES = require("../Instrucciones/instrucciones").TYPES;
+        const OPERATION_VALUE = require("../Instrucciones/instrucciones").OPERATION_VALUE;
+%}
+        
 /* PRECEDENCIAS */
 %left 'OP_AND' 'OP_OR'
 %left 'OP_IGUALIGUAL' 'OP_DISTINTO'
@@ -118,6 +130,7 @@
 %left 'UMENOS'
 %right 'OP_NOT'
 %right 'OP_AUMENTO' 'OP_DECREMENTO'
+%right 'OP_SUMA_SIMPLIFICADA' 'OP_RESTA_SIMPLIFICADA' 'OP_MULTIPLICACION_SIMPLIFICADA'  'OP_DIVISION_SIMPLIFICADA' 'OP_MODULO_SIMPLIFICADA'
 
 // SIMBOLO INICIAL
 %start INICIO
@@ -126,209 +139,220 @@
 /* ANALIZADOR SINTACTICO */
 
 INICIO
-        : INICIOPRIMA EOF          { return $1} // Se retorna el AST al finalizar de reconocer la entrada
+        : INICIOPRIMA EOF       { return $1; } // Se retorna el AST al finalizar de reconocer la entrada
 ;
 
 INICIOPRIMA
-        : IMPORTACIONES CLASES { $1.push($2); $$ = S1; }
-        | CLASES               { $$ = [$1]; }
+        : INICIOPRIMA IMPORTACIONES     { $1.push($2); $$ = $1; }
+        | IMPORTACIONES                 { $$ = $1; }
 ;
 
 IMPORTACIONES
-        : IMPORTACIONES PR_IMPORT ID S_PUNTOCOMA            
-        | PR_IMPORT ID S_PUNTOCOMA
+        : PR_IMPORT IMPORTACION        { $$ = $2; } 
+        | PR_CLASS CLASE                { $$ = $2; }
 ;
 
-CLASES 
-        : CLASES PR_CLASS ID S_LLAVE_ABRE CUERPO S_LLAVE_CIERRA
-        | PR_CLASS ID S_LLAVE_ABRE CUERPO S_LLAVE_CIERRA
+IMPORTACION
+        : ID S_PUNTOCOMA      { $$ = instruccionesAPI.nuevoImport($1); }
+;
+
+CLASE
+        : ID S_LLAVE_ABRE CUERPO S_LLAVE_CIERRA   { $$ = instruccionesAPI.nuevoClase($1, $3);}
 ;
 
 CUERPO
-        : CUERPO CUERPOPRIMA
-        | CUERPOPRIMA
+        : CUERPO CUERPOPRIMA    { $1.push($2); $$ = $1; }
+        | CUERPOPRIMA           { $$ = $1; }  
 ;
 
 CUERPOPRIMA
-        : DECLARACIONES
-        | FUNCIONES
+        : DECLARACIONES { $$ = $1;}
+        | FUNCIONES     { $$ = $1; }
 ;
 
 DECLARACIONES 
-        : TIPO_DATO DECLARACION S_PUNTOCOMA
+        : TIPO_DATO DECLARACION S_PUNTOCOMA { $$ = instruccionesAPI.nuevoDeclaracion($2, $1); }
 ;
 
 DECLARACION
-        : DECLARACION S_COMA DECLARACIONPRIMA
-        | DECLARACIONPRIMA
+        : DECLARACION S_COMA DECLARACIONPRIMA   { $$ = instruccionesAPI.nuevoVariables($1, $2, $3); }
+        | DECLARACIONPRIMA                      { $$ = $1;}
 ;
 
 DECLARACIONPRIMA
-        : ID = EXPRESION
-        | ID
+        : ID S_IGUAL EXPRESION        { $$ = instruccionesAPI.nuevoAsignacion($1, $3); }
+        | ID                    { $$ = $1 }
 ;
 
 FUNCIONES 
-        : TIPO_DATO ID PARAMETROS CUERPO_METODO
-        | PR_VOID ID PARAMETROS CUERPO_METODO
-        | POR_VOID PR_MAIN S_PARENTESIS_ABRE S_PARENTESIS_CIERRA CUERPO_METODO
+        : TIPO_DATO ID PARAMETROS CUERPO_METODO                                 { $$ = instruccionesAPI.nuevoFuncion($1, $2, $3, $4); }
+        | PR_VOID ID PARAMETROS CUERPO_METODO                                   { $$ = instruccionesAPI.nuevoMetodo($2, $3, $4); }
+        | POR_VOID PR_MAIN S_PARENTESIS_ABRE S_PARENTESIS_CIERRA CUERPO_METODO  { $$ = instruccionesAPI.nuevoMetodo($2, undefined, $4); }
 ;
 
 PARAMETROS
-        : S_PARENTESIS_ABRE LISTA_PARAMETRO S_PARENTESIS_CIERRA
-        | S_PARENTESIS_ABRE S_PARENTESIS_CIERRA
+        : S_PARENTESIS_ABRE LISTA_PARAMETRO S_PARENTESIS_CIERRA { $$ = [$2]; }
+        | S_PARENTESIS_ABRE S_PARENTESIS_CIERRA                 { $$ = undefined; }
 ;
 
 LISTA_PARAMETRO
-        : LISTA_PARAMETRO COMA PARAMETRO
-        | PARAMETRO
+        : LISTA_PARAMETRO S_COMA PARAMETRO        { $$ = instruccionesAPI.nuevoParametros($1, $2, $3); }
+        | PARAMETRO                             { $$ = $1; }
 ;
 
 PARAMETRO
-        : TIPO_DATO ID
+        : TIPO_DATO ID  { $$ = instruccionesAPI.nuevoParametro($1, $2); }
 ;
 
 CUERPO_METODO
-        : S_LLAVE_ABRE INSTRUCCIONES S_LLAVE_CIERRA
-        | S_LLAVE_ABRE S_LLAVE_CIERRA
+        : S_LLAVE_ABRE INSTRUCCIONES S_LLAVE_CIERRA     { $$ = [$2]; }
+        | S_LLAVE_ABRE S_LLAVE_CIERRA                   { $$ = undefined; }
 ;
 
 INSTRUCCIONES
-        : INSTRUCCIONES INSTRUCCION
-        | INSTRUCCION
+        : INSTRUCCIONES INSTRUCCION     { $$ = instruccionesAPI.nuevoInstrucciones($1, $2); }
+        | INSTRUCCION                   { $$ = instruccionesAPI.nuevoInstruccion($1); }
 ;
 
 INSTRUCCION
-        : DECLARACION
-        | ASIGNACION
-        | FUNCION
-        | IMPRESION
-        | IF
-        | SWITCH
-        | WHILE
-        | DO_WHILE
-        | FOR
-        | BREAK
-        | CONTINUE
-        | RETURN
+        : DECLARACION   { $$ = $1; }
+        | ASIGNACION    { $$ = $1; }
+        | FUNCION       { $$ = $1; }
+        | IMPRESION     { $$ = $1; }
+        | IF            { $$ = $1; }
+        | SWITCH        { $$ = $1; }
+        | WHILE         { $$ = $1; }
+        | DO_WHILE      { $$ = $1; }
+        | FOR           { $$ = $1; }
+        | BREAK         { $$ = $1; }
+        | CONTINUE      { $$ = $1; }
+        | RETURN        { $$ = $1; }
 ;
 
 ASIGNACION
-        : ID S_IGUAL EXPRESION S_PUNTOCOMA
-        | ID OP_AUMENTO S_PUNTOCOMA
-        | ID OP_DECREMENTO S_PUNTOCOMA
+        : ID S_IGUAL EXPRESION S_PUNTOCOMA      { $$ = instruccionesAPI.nuevoAsignacion($1, $3); }
+        | ID OP_AUMENTO S_PUNTOCOMA             { $$ = instruccionesAPI.nuevoAumento($1, $2); }
+        | ID OP_DECREMENTO S_PUNTOCOMA          { $$ = instruccionesAPI.nuevoAumento($1, $2); }
+        | ID OP_SIMPLIFICADA EXPRESION          { $$ = instruccionesAPI.nuevoAsignacionSimplificada($1, $2, $3); }
 ;
 
 FUNCION
-        : ID S_PARENTESIS_ABRE EXPRESIONES S_PARENTESIS_CIERRA S_PUNTOCOMA
-        | ID S_PARENTESIS_ABRE S_PARENTESIS_CIERRA S_PUNTOCOMA
+        : ID S_PARENTESIS_ABRE EXPRESIONES S_PARENTESIS_CIERRA S_PUNTOCOMA      { $$ = instruccionesAPI.nuevoLLamadaFuncion($1,$3); }
+        | ID S_PARENTESIS_ABRE S_PARENTESIS_CIERRA S_PUNTOCOMA                  { $$ = instruccionesAPI.nuevoLLamadaFuncion($1, undefined); }
 ;
 
-EXPRESIONES
-        : EXPRESIONES COMA EXPRESION
-        | EXPRESION
+EXPRESIONES     
+        : EXPRESIONES S_COMA EXPRESION  { $$ = instruccionesAPI.nuevoExpresionesParametro($1, $3); }
+        | EXPRESION                     { $$ = $1; }  
 ;
 
 IMPRESION 
-        : PR_SYSTEM S_PUNTO PR_OUT S_PUNTO TIPO_IMPRESION S_PARENTESIS_ABRE EXPRESION S_PARENTESIS_CIERRA S_PUNTOCOMA
+        : PR_SYSTEM S_PUNTO PR_OUT S_PUNTO TIPO_IMPRESION S_PARENTESIS_ABRE EXPRESION S_PARENTESIS_CIERRA S_PUNTOCOMA { $$ = instruccionesAPI.nuevoImprimir($5, $7); }
 ;
 
 TIPO_IMPRESION 
-        : PR_PRINT
-        | PR_PRINTLN
+        : PR_PRINT      { $$ = $1; }
+        | PR_PRINTLN    { $$ = $1; }
 ;
 
 IF
-        : PR_IF CONDICION CUERPO_METODO
-        | PR_IF CONDICION CUERPO_METODO PR_ELSE CUERPO_METODO
-        | PR_IF CONDICION CUERPO_METODO PR_ELSE IF
+        : PR_IF CONDICION CUERPO_METODO                         { $$ = instruccionesAPI.cuerpoIf($2, $3, undefined, undefined); }
+        | PR_IF CONDICION CUERPO_METODO PR_ELSE CUERPO_METODO   { $$ = instruccionesAPI.cuerpoIf($2, $3, instruccionesAPI.nuevoElse($5), undefined); }
+        | PR_IF CONDICION CUERPO_METODO PR_ELSE IF              { $$ = instruccionesAPI.cuerpoIf($2, $3, undefined, instruccionesAPI.nuevoElseIf($5)); }
 ;
 
 CONDICION
-        : S_PARENTESIS_ABRE EXPRESION S_PARENTESIS_CIERRA
+        : S_PARENTESIS_ABRE EXPRESION S_PARENTESIS_CIERRA   { $$ = instruccionesAPI.nuevoCondicion($2); }
 ;
 
 SWITCH
-        : PR_SWITCH CONDICION S_LLAVE_ABRE CASES S_LLAVE_CIERRA
+        : PR_SWITCH CONDICION S_LLAVE_ABRE CASES S_LLAVE_CIERRA { $$ = instruccionesAPI.nuevoSwitch($2, $4); }
 ;
 
 CASES
-        : CASES CASE
-        | CASE
+        : CASES CASE    { $1.push($2); $$ = $1; }
+        | CASE          { $$ = instruccionesAPI.nuevoListaCasos($1); }
 ;
 
 CASE    
-        : PR_CASE EXPRESION S_DOSPUNTOS INSTRUCCIONES
-        | PR_DEFAULT S_DOSPUNTOS INSTRUCCIONES
-;
+        : PR_CASE EXPRESION S_DOSPUNTOS INSTRUCCIONES   { $$ = instruccionesAPI.nuevoCaso($2, $4); }
+        | PR_DEFAULT S_DOSPUNTOS INSTRUCCIONES          { $$ = instruccionesAPI.nuevoCasoDef($3); }
+;      
 
 WHILE 
-        : PR_WHILE CONDICION CUERPO_METODO
+        : PR_WHILE CONDICION CUERPO_METODO      { $$ = instruccionesAPI.nuevoWhile($2,$3); }
 ;
 
 DO_WHILE 
-        : PR_DO CUERPO_METODO PR_WHILE CONDICION S_PUNTOCOMA
+        : PR_DO CUERPO_METODO PR_WHILE CONDICION S_PUNTOCOMA    { $$ = instruccionesAPI.nuevoDoWhile($4, $2); }
 ;
 
 FOR     
-        : PR_FOR S_PARENTESIS_ABRE ASIGNACION_FOR S_PUNTOCOMA EXPRESION S_PUNTOCOMA CAMBIO_VALOR S_PARENTESIS_CIERRA CUERPO_METODO
+        : PR_FOR S_PARENTESIS_ABRE ASIGNACION_FOR S_PUNTOCOMA EXPRESION S_PUNTOCOMA CAMBIO_VALOR S_PARENTESIS_CIERRA CUERPO_METODO { $$ = instruccionesAPI.nuevoFor($3, $5, $7, $9); }
 ;
 
 ASIGNACION_FOR
-        : DECLARACION
-        | ASIGNACION
+        : DECLARACION   { $$ = $1; }
+        | ASIGNACION    { $$ = $1; }
 ;
 
 CAMBIO_VALOR
-        : OP_AUMENTO
-        | OP_DECREMENTO
+        : OP_AUMENTO    { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.AUMENTO); }
+        | OP_DECREMENTO { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.DECREMENTO); }
 ;
 
 BREAK
-        : PR_BREAK S_PUNTOCOMA
+        : PR_BREAK S_PUNTOCOMA  { $$ = instruccionesAPI.nuevoBreak(); }
 ;
 
 CONTINUE
-        : PR_CONTINUE S_PUNTOCOMA
+        : PR_CONTINUE S_PUNTOCOMA { $$ = instruccionesAPI.nuevoContinue(); }
 ;
 
 RETURN
-        : PR_RETURN EXPRESION S_PUNTOCOMA
-        | PR_RETURN S_PUNTOCOMA
+        : PR_RETURN EXPRESION S_PUNTOCOMA       { $$ = instruccionesAPI.nuevoReturn($2); }
+        | PR_RETURN S_PUNTOCOMA                 { $$ = instruccionesAPI.nuevoReturn(undefined); }
 ;
 
 TIPO_DATO
-        : TD_CHAR
-        | TD_STRING
-        | TD_INT
-        | TD_DOUBLE
-        | TD_BOOLEAN
+        : TD_CHAR       { $$ = instruccionesAPI.nuevoValor($1, TYPES.CAHR); }
+        | TD_STRING     { $$ = instruccionesAPI.nuevoValor($1, TYPES.STRING); }
+        | TD_INT        { $$ = instruccionesAPI.nuevoValor($1, TYPES.INT); }
+        | TD_DOUBLE     { $$ = instruccionesAPI.nuevoValor($1, TYPES.DOUBLE); }
+        | TD_BOOLEAN    { $$ = instruccionesAPI.nuevoValor($1, TYPES.BOOLEAN); }
+;
+
+OP_SIMPLIFICADA
+        : OP_SUMA_SIMPLIFICADA                  { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MAS_IGUAL); }
+        | OP_RESTA_SIMPLIFICADA                 { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MENOS_IGUAL); }
+        | OP_MULTIPLICACION_SIMPLIFICADA        { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MULTIPLICACION_IGUAL); }
+        | OP_DIVISION_SIMPLIFICADA              { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.DIVISION_IGUAL); }
+        | OP_MODULO_SIMPLIFICADA                { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MODULO_IGUAL); }
 ;
 
 EXPRESION
-        : OP_RESTA EXPRESION %prec UMENOS	
-	| OP_NOT EXPRESION	
-        | EXPRESION OP_SUMA EXPRESION 
-        | EXPRESION OP_RESTA EXPRESION	
-        | EXPRESION OP_MULTIPLICACION EXPRESION 
-        | EXPRESION OP_DIVISION EXPRESION 
-	| EXPRESION OP_MODULO EXPRESION 
-	| EXPRESION OP_POTENCIA EXPRESION 
-	| EXPRESION OP_AND EXPRESION	
-	| EXPRESION OP_OR EXPRESION 
-	| EXPRESION OP_IGUALIGUAL EXPRESION 
-	| EXPRESION OP_DISTINTO EXPRESION 
-	| EXPRESION OP_MENORIGUAL EXPRESION 
-	| EXPRESION OP_MENOR EXPRESION 
-	| EXPRESION OP_MAYORIGUAL EXPRESION 
-	| EXPRESION OP_MAYOR EXPRESION 
-	| S_PARENTESIS_ABRE EXPRESION S_PARENTESIS_CIERRA 
-	| NUMERO 
-        | PR_TRUE 
-        | PR_FALSE 
-        | CADENA 
-	| CARACTER 
-        | FUNCION
-	| ID 
+        : OP_RESTA EXPRESION %prec UMENOS	                { $$ = instruccionesAPI.operacionUnaria($2, OPERATION_VALUE.NEGATIVO); }
+	| OP_NOT EXPRESION	                                { $$ = instruccionesAPI.operacionUnaria($2, OPERATION_VALUE.NOT); }
+        | EXPRESION OP_SUMA EXPRESION                           { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.SUMA); }
+        | EXPRESION OP_RESTA EXPRESION	                        { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.RESTA); }
+        | EXPRESION OP_MULTIPLICACION EXPRESION                 { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MULTIPLICACION); }
+        | EXPRESION OP_DIVISION EXPRESION                       { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.DIVISION); }
+	| EXPRESION OP_MODULO EXPRESION                         { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MODULO); }
+	| EXPRESION OP_POTENCIA EXPRESION                       { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.POTENCIA); }
+	| EXPRESION OP_AND EXPRESION	                        { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.AND); }
+	| EXPRESION OP_OR EXPRESION                             { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.OR); }
+	| EXPRESION OP_IGUALIGUAL EXPRESION                     { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.IGUAL_IGUAL); }
+	| EXPRESION OP_DISTINTO EXPRESION                       { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.DISTINTO); }
+	| EXPRESION OP_MENORIGUAL EXPRESION                     { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MENOR_IGUAL); }
+	| EXPRESION OP_MENOR EXPRESION                          { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MENOR_QUE); }
+	| EXPRESION OP_MAYORIGUAL EXPRESION                     { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MAYOR_IGUAL); }
+	| EXPRESION OP_MAYOR EXPRESION                          { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MAYOR_QUE); }
+	| S_PARENTESIS_ABRE EXPRESION S_PARENTESIS_CIERRA       { $$ = $2; }
+	| NUMERO        { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.NUMERO); }
+        | PR_TRUE       { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.BOOLEAN); }
+        | PR_FALSE      { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.BOOLEAN); }
+        | CADENA        { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.CADENA); }
+	| CARACTER      { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.CARACTER); }
+        | FUNCION       { $$ = instruccionesAPI.nuevoValor($1, "FUNCION"); }
+	| ID            { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.IDENTIFICADOR); }
 ;
-
