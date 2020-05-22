@@ -1,6 +1,6 @@
 /* GRAMATICA PARA EL LENGUAJE JAVA */
 %{
-        const ERRORES			= require('../Instrucciones/instrucciones').ERRORES; 
+        const errores			= require('../Instrucciones/instrucciones').ERRORES; 
 %}
 
 /*DEFINICION DE ANALIZADOR LEXICIO*/
@@ -112,7 +112,7 @@
 
 <<EOF>>                             return 'EOF';
 
-.                                   { console.error('Error léxio: ' + yytext + '\nLínea: ' + yylloc.first_line + '\nColumna: ' + yylloc.column); }
+.                                   {$$ = errores.nuevoError(errores.error(yytext, yylloc.first_line, yylloc.column)); }
 
 /lex
 
@@ -171,7 +171,7 @@ CUERPO
 
 CUERPOPRIMA
         : DECLARACIONES S_PUNTOCOMA { $$ = $1;}
-        | FUNCIONES     { $$ = $1; }
+        | FUNCIONES                 { $$ = $1; }
 ;
 
 DECLARACIONES 
@@ -191,7 +191,7 @@ DECLARACIONPRIMA
 FUNCIONES 
         : TIPO_DATO ID PARAMETROS CUERPO_METODO                                 { $$ = instruccionesAPI.nuevoFuncion($1, $2, $3, $4); }
         | PR_VOID ID PARAMETROS CUERPO_METODO                                   { $$ = instruccionesAPI.nuevoMetodo($2, $3, $4); }
-        | PR_VOID PR_MAIN S_PARENTESIS_ABRE S_PARENTESIS_CIERRA CUERPO_METODO  { $$ = instruccionesAPI.nuevoMetodo($2, undefined, $4); }
+        | PR_VOID PR_MAIN S_PARENTESIS_ABRE S_PARENTESIS_CIERRA CUERPO_METODO   { $$ = instruccionesAPI.nuevoMetodo($2, undefined, $4); }
 ;
 
 PARAMETROS
@@ -200,7 +200,7 @@ PARAMETROS
 ;
 
 LISTA_PARAMETRO
-        : LISTA_PARAMETRO S_COMA PARAMETRO        { $$ = instruccionesAPI.nuevoParametros($1, $2, $3); }
+        : LISTA_PARAMETRO S_COMA PARAMETRO      { $$ = instruccionesAPI.nuevoParametros($1, $2, $3); }
         | PARAMETRO                             { $$ = $1; }
 ;
 
@@ -221,7 +221,7 @@ INSTRUCCIONES
 INSTRUCCION
         : DECLARACIONES S_PUNTOCOMA     { $$ = $1; }
         | ASIGNACION S_PUNTOCOMA        { $$ = $1; }
-        | FUNCION                       { $$ = $1; }
+        | FUNCION S_PUNTOCOMA           { $$ = $1; }
         | IMPRESION                     { $$ = $1; }
         | IF                            { $$ = $1; }
         | SWITCH                        { $$ = $1; }
@@ -240,8 +240,8 @@ ASIGNACION
 ;
 
 FUNCION
-        : ID S_PARENTESIS_ABRE EXPRESIONES S_PARENTESIS_CIERRA S_PUNTOCOMA      { $$ = instruccionesAPI.nuevoLLamadaFuncion($1,$3); }
-        | ID S_PARENTESIS_ABRE S_PARENTESIS_CIERRA S_PUNTOCOMA                  { $$ = instruccionesAPI.nuevoLLamadaFuncion($1, undefined); }
+        : ID S_PARENTESIS_ABRE EXPRESIONES S_PARENTESIS_CIERRA      { $$ = instruccionesAPI.nuevoLLamadaFuncion($1,$3); }
+        | ID S_PARENTESIS_ABRE S_PARENTESIS_CIERRA                  { $$ = instruccionesAPI.nuevoLLamadaFuncion($1, undefined); }
 ;
 
 EXPRESIONES     
@@ -356,11 +356,6 @@ EXPRESION
         | PR_FALSE      { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.BOOLEAN); }
         | CADENA        { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.CADENA); }
 	| CARACTER      { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.CARACTER); }
-        | FUNCION2      { $$ = instruccionesAPI.nuevoValor($1, "FUNCION"); }
+        | FUNCION       { $$ = instruccionesAPI.nuevoValor($1, "FUNCION"); }
 	| ID            { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.IDENTIFICADOR); }
-;
-
-FUNCION2
-        : ID S_PARENTESIS_ABRE EXPRESIONES S_PARENTESIS_CIERRA
-        | ID S_PARENTESIS_ABRE S_PARENTESIS_CIERRA
 ;

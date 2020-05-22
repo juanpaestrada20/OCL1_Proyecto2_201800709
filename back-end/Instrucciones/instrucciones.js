@@ -187,13 +187,6 @@ const instruccionesAPI = {
     };
   },
 
-  bloqueClase: function (clases, clase) {
-    return {
-      BLOQUE: clases,
-      BLOQUEPRIMA: clase,
-    };
-  },
-
   /**
    * Crea un objeto tipo Instrucción para la sentencia Declaración.
    * @param {*}variables
@@ -203,7 +196,6 @@ const instruccionesAPI = {
       TIPO: INSTRUCTION_TYPE.DECLARACION,
       TIPO_DATO: tipo,
       VARIABLE: variables,
-      PUNTOCOMA: ";",
     };
   },
 
