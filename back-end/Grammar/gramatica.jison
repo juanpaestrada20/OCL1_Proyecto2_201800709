@@ -113,11 +113,11 @@
 
 /lex
 
-        % {
-        const instruccionesAPI = require("../Instrucciones/instrucciones").instruccionesAPI;
-        const VALUE_TYPES = require("../Instrucciones/instrucciones").VALUE_TYPES;
-        const TYPES = require("../Instrucciones/instrucciones").TYPES;
-        const OPERATION_VALUE = require("../Instrucciones/instrucciones").OPERATION_VALUE;
+%{
+	const OPERATION_VALUE	= require('../Instrucciones/instrucciones').OPERATION_VALUE;
+	const VALUE_TYPES 		= require('../Instrucciones/instrucciones').VALUE_TYPES;
+	const TYPES			= require('../Instrucciones/instrucciones').TYPES; //para jalar el tipo de dato
+	const instruccionesAPI	= require('../Instrucciones/instrucciones').instruccionesAPI;
 %}
         
 /* PRECEDENCIAS */
@@ -180,8 +180,8 @@ DECLARACION
 ;
 
 DECLARACIONPRIMA
-        : ID S_IGUAL EXPRESION        { $$ = instruccionesAPI.nuevoAsignacion($1, $3); }
-        | ID                    { $$ = $1 }
+        : ID                    { $$ = $1 }
+        | ID S_IGUAL EXPRESION  { $$ = instruccionesAPI.nuevoAsignacion($1, $3); }
 ;
 
 FUNCIONES 
