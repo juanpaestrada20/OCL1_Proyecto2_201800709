@@ -267,6 +267,13 @@ const instruccionesAPI = {
     };
   },
 
+  nuevoInstrucciones: function (instrucciones, instrucccion) {
+    return {
+      INSTRUCTIONES: instrucccion,
+      INSTRUCCION: instrucccion,
+    };
+  },
+
   /**
    * Creacion de objeto de llamada una funcion
    * @param {*} identificador
