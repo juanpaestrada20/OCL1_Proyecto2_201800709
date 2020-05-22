@@ -193,6 +193,18 @@ const instruccionesAPI = {
   },
 
   /**
+   * Creacion de objeto cuando aumenta o disminuye una variable
+   * @param {*} identificador
+   * @param {*} aumento
+   */
+  nuevoAumento: function (identificador, aumento) {
+    return {
+      IDENTIFICADOR: identificador,
+      CAMBIO: aumento,
+    };
+  },
+
+  /**
    * Creacion de objeto tipo Metodo
    * @param {*} identificador
    * @param {*} parametros
@@ -267,13 +279,22 @@ const instruccionesAPI = {
     };
   },
 
+  /**
+   * Creacion de objeto de las instrucciones en un bloque
+   * @param {*} instrucciones
+   * @param {*} instrucccion
+   */
   nuevoInstrucciones: function (instrucciones, instrucccion) {
     return {
-      INSTRUCTIONES: instrucccion,
+      INSTRUCTIONES: instrucciones,
       INSTRUCCION: instrucccion,
     };
   },
 
+  /**
+   * Creacion de objeto de una instruccion
+   * @param {*} instrucccion
+   */
   nuevoInstruccion: function (instrucccion) {
     return {
       INSTRUCCION: instrucccion,
@@ -293,6 +314,19 @@ const instruccionesAPI = {
       PARAMETROS: parametros,
       PARENTESIS_CIERRA: ")",
       PUNTOCOMA: ";",
+    };
+  },
+
+  /**
+   * Creacion de objeto de parametros necesarios al llamar una funcion
+   * @param {*} expresiones
+   * @param {*} expresion
+   */
+  nuevoExpresionesParametro: function (expresiones, expresion) {
+    return {
+      PARAMETRO: expresiones,
+      COMA: ",",
+      PARAMETRO: expresion,
     };
   },
 
