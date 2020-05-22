@@ -170,12 +170,12 @@ CUERPO
 ;
 
 CUERPOPRIMA
-        : DECLARACIONES { $$ = $1;}
+        : DECLARACIONES S_PUNTOCOMA { $$ = $1;}
         | FUNCIONES     { $$ = $1; }
 ;
 
 DECLARACIONES 
-        : TIPO_DATO DECLARACION S_PUNTOCOMA { $$ = instruccionesAPI.nuevoDeclaracion($2, $1); }
+        : TIPO_DATO DECLARACION { $$ = instruccionesAPI.nuevoDeclaracion($2, $1); }
 ;
 
 DECLARACION
@@ -219,25 +219,24 @@ INSTRUCCIONES
 ;
 
 INSTRUCCION
-        : DECLARACIONES { $$ = $1; }
-        | ASIGNACION    { $$ = $1; }
-        | FUNCION       { $$ = $1; }
-        | IMPRESION     { $$ = $1; }
-        | IF            { $$ = $1; }
-        | SWITCH        { $$ = $1; }
-        | WHILE         { $$ = $1; }
-        | DO_WHILE      { $$ = $1; }
-        | FOR           { $$ = $1; }
-        | BREAK         { $$ = $1; }
-        | CONTINUE      { $$ = $1; }
-        | RETURN        { $$ = $1; }
+        : DECLARACIONES S_PUNTOCOMA     { $$ = $1; }
+        | ASIGNACION S_PUNTOCOMA        { $$ = $1; }
+        | FUNCION                       { $$ = $1; }
+        | IMPRESION                     { $$ = $1; }
+        | IF                            { $$ = $1; }
+        | SWITCH                        { $$ = $1; }
+        | WHILE                         { $$ = $1; }
+        | DO_WHILE                      { $$ = $1; }
+        | FOR                           { $$ = $1; }
+        | BREAK                         { $$ = $1; }
+        | CONTINUE                      { $$ = $1; }
+        | RETURN                        { $$ = $1; }
 ;
 
 ASIGNACION
-        : ID S_IGUAL EXPRESION S_PUNTOCOMA      { $$ = instruccionesAPI.nuevoAsignacion($1, $3); }
-        | ID OP_AUMENTO S_PUNTOCOMA             { $$ = instruccionesAPI.nuevoAumento($1, $2); }
-        | ID OP_DECREMENTO S_PUNTOCOMA          { $$ = instruccionesAPI.nuevoAumento($1, $2); }
-        | ID OP_SIMPLIFICADA EXPRESION          { $$ = instruccionesAPI.nuevoAsignacionSimplificada($1, $2, $3); }
+        : ID S_IGUAL EXPRESION          { $$ = instruccionesAPI.nuevoAsignacion($1, $3); }
+        | CAMBIO_VALOR                  { $$ = instruccionesAPI.nuevoAumento($1, $2); }
+        | ID OP_SIMPLIFICADA EXPRESION  { $$ = instruccionesAPI.nuevoAsignacionSimplificada($1, $2, $3); }
 ;
 
 FUNCION
@@ -292,7 +291,7 @@ DO_WHILE
 ;
 
 FOR     
-        : PR_FOR S_PARENTESIS_ABRE ASIGNACION_FOR  EXPRESION S_PUNTOCOMA CAMBIO_VALOR S_PARENTESIS_CIERRA CUERPO_METODO { $$ = instruccionesAPI.nuevoFor($3, $5, $7, $9); }
+        : PR_FOR S_PARENTESIS_ABRE ASIGNACION_FOR S_PUNTOCOMA EXPRESION S_PUNTOCOMA CAMBIO_VALOR S_PARENTESIS_CIERRA CUERPO_METODO { $$ = instruccionesAPI.nuevoFor($3, $5, $7, $9); }
 ;
 
 ASIGNACION_FOR
@@ -327,11 +326,11 @@ TIPO_DATO
 ;
 
 OP_SIMPLIFICADA
-        : OP_SUMA_SIMPLIFICADA                  { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MAS_IGUAL); }
-        | OP_RESTA_SIMPLIFICADA                 { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MENOS_IGUAL); }
-        | OP_MULTIPLICACION_SIMPLIFICADA        { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MULTIPLICACION_IGUAL); }
-        | OP_DIVISION_SIMPLIFICADA              { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.DIVISION_IGUAL); }
-        | OP_MODULO_SIMPLIFICADA                { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MODULO_IGUAL); }
+        : OP_SUMA S_IGUAL                  { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MAS_IGUAL); }
+        | OP_RESTA S_IGUAL                 { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MENOS_IGUAL); }
+        | OP_MULTIPLICACION S_IGUAL        { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MULTIPLICACION_IGUAL); }
+        | OP_DIVISION S_IGUAL              { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.DIVISION_IGUAL); }
+        | OP_MODULO S_IGUAL                { $$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MODULO_IGUAL); }
 ;
 
 EXPRESION
