@@ -112,7 +112,7 @@
 
 <<EOF>>                             return 'EOF';
 
-.                                   {$$ = ERRORES.nuevoError(ERRORES.error(yytext, yylloc.first_line, yylloc.column)); }
+.                                   {$$ = ERRORES.nuevoError(ERRORES.error(yytext, yylloc.first_line, yylloc.column, "Lexico")); }
 
 /lex
 
@@ -157,6 +157,7 @@ IMPORTACIONES
 
 IMPORTACION
         : ID S_PUNTOCOMA      { $$ = instruccionesAPI.nuevoImport($1); }
+        | S_PUNTOCOMA         {ERRORES.nuevoError(ERRORES.error(yy.parser.hash.token, @1.first_line, @1.first_column, "Sintactico")); }
 ;
 
 CLASE

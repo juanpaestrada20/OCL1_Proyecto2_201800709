@@ -31,17 +31,17 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/parser", (request, response) => {
-  response.send("Creando AST");
-  createAST();
+app.post("/parser/", (request, response) => {
+  var entrada = request.body.text;
+  var result = crearAst(entrada);
+  response.send(result);
 });
 
-function createAST() {
+function crearAst(text) {
   try {
-    const entrada = fs.readFileSync("./entrada.txt");
-    ast = parser.parse(entrada.toString());
-
+    ast = parser.parse(text.toString());
     fs.writeFileSync("./ast.json", JSON.stringify(ast, null, 2));
+    return ast;
   } catch (e) {
     console.error(e);
     return;

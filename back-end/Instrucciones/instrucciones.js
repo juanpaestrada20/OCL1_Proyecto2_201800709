@@ -92,11 +92,12 @@ const ERRORES = {
     return errores;
   },
 
-  error: function (error, fila, columna) {
+  error: function (error, fila, columna, tipo) {
     return {
       ERROR: error,
       FILA: fila,
       COLUMNA: columna,
+      TIPO: tipo,
     };
   },
 };
