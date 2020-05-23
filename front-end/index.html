@@ -34,12 +34,14 @@
             </button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-outline-light">Abrir</button>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-light">
-              Limpiar Area
-            </button>
+            <input
+              class="nav-link btn btn-outline-light"
+              type="file"
+              id="fileInput"
+              name="fileInput"
+              accept=".java, .txt"
+              (change)="procesar(e)"
+            />
           </li>
           <li class="nav-item">
             <button type="button" class="btn btn-outline-light">
@@ -96,7 +98,7 @@
             class="btn btn-dark btn-lg btn-block px-4 mx-2"
             onclick="getText()"
           >
-            Traducir Codigo
+            Analizar
           </button>
         </div>
         <div class="col-4 col-xs-5 .col-sm-6 .col-lg-4 w-60">
@@ -111,17 +113,30 @@
       </div>
 
       <div class="row">
-        <div class="col">
-          <h4 style="color: #fff;">Salida:</h4>
+        <h4 style="color: #fff;">Salida:</h4>
+        <div class="row">
           <textarea
             name="salida"
             id="salida"
-            cols="65"
-            rows="15"
+            cols="150"
+            rows="25"
             style="background-color: rgb(66, 83, 100);"
           ></textarea>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
 
     <script src="assets/js/app.js"></script>

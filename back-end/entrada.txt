@@ -1,0 +1,133 @@
+/*
+
+        SECCION DE LOS IMPORT
+
+ */
+
+import Sistema;          // Sistema juasjuas
+import Node;            // Nodo de una estructura de datos
+import JTable;          // Tabla para mostrar datos
+import Bichulga;        // Grupo con funciones del grupo
+import asdf;
+
+class Principal{
+
+    int a = 12;
+    boolean aver = false;
+    String cadenaTextoPrincipal = "Los del grupo de Bichulga se copian todos los trabajos de compi" + a * bv;    
+
+    void menuAnidado(){
+        System.out.println(imprimeEsto("MENU PRINCIPAL DE LA APLICACION"));
+        System.out.println(imprimeEsto("1. Operaciones Bichulga"));
+        System.out.println(imprimeEsto("2. Operaciones Aritmeticas"));
+        System.out.println(imprimeEsto("3. Visualizar nodo"));
+        System.out.println(imprimeEsto("4. Ordenamientos"));
+
+        String leerTecla = leerTecla();
+        switch (leerTecla) {
+            case "1":
+                System.out.println(imprimeEsto("Operaciones Bichulga"));
+                System.out.println(imprimeEsto("1. Sacar a Alejandro Sosa"));
+                System.out.println(imprimeEsto("2. Jugar Minecraft"));
+                System.out.println(imprimeEsto("3. Paja grupal en 5 minutos"));
+                System.out.println(imprimeEsto("4. Salir"));
+                String leerTecla = leerTecla();
+
+                if(leerTecla == "1" && leerTecla != (1 + 21 * 3111) || 1 <= 2){
+                    CallCisco();
+                }else if(leerTecla == "2" && leerTecla != (1 + 21 * 3111) || 1 <= 4){
+                    
+                }else if(leerTecla == "3" && leerTecla != ("dnicsa" + 21 * dsa) || 1 <= 1){
+                    System.out.println("Atentos que toca la paja grupal en 5 minutos... Corran para llegar a tiempo");
+                    PajaGrupal();
+                }else if(leerTecla == "4" && leerTecla != (1 + 21 * 3111) || 1 <= 2){
+                    System.out.println("Salir del sistema Bichulga...");
+                    menuAnidado();
+                }
+                else if(!b)
+                {
+                    
+                    
+                }else{
+
+                }
+
+                break;
+            case 1+1:
+                break;
+            case "3":
+                break;
+            case 4:
+                break;
+            default:
+                System.out.println("Teclee una opcion correcta prro");
+                menuAnidado();
+                break;
+        }
+    }
+
+    String imprimeEsto(String cadena){
+        return cadena;
+    }
+
+    char leerTecla(){
+        LeerSistema();
+    }
+}
+
+class Aritmetica{
+    int suma(double a, int b){
+        return a + b;
+    }
+
+    double resta(int a, boolean b){
+        return a - b;
+    }
+
+    double multi(int a, int b){
+        return a * b;
+    }
+
+    double div(int a, int b){
+        return a / b;
+    }
+
+    int potencia(int a, String b){
+        return a ^ b;
+    }
+
+    String modulo(int a, int b){
+        return a % b;
+    }
+
+    void main(){
+        // Prueba gg
+        suma(1 + 212, "Holdsa", 21, a);
+        resta(1 + 212, "Holdsa", a);
+        multi(2, 21);
+        div(1 + 212, "Holdsa", 21, db);
+        potencia(1 + 212, "Holdsa", 21, Node);
+        modulo(1 + 212, "Holdsa", 21, a);
+
+        System.out.println("Los resultados de las pruebas aritmeticas no sirven acá");
+        System.out.print("A no ser...");
+    }
+}
+
+class Bigulga{
+
+}
+
+class Node{
+"
+}
+
+class BubblueSort{}
+
+class QuickSort{
+
+}
+
+class ShellSort{
+
+}

@@ -1,0 +1,1287 @@
+{
+  "IMPORTACIONES": {
+    "IMPORTACIONES": {
+      "IMPORTACIONES": {
+        "IMPORTACIONES": {
+          "IMPORTACIONES": {
+            "IMPORTACIONES": {
+              "IMPORTACIONES": {
+                "IMPORTACIONES": {
+                  "IMPORTACIONES": {
+                    "IMPORTACIONES": {
+                      "IMPORTACIONES": {
+                        "TIPO": "IMPORTACION",
+                        "IDENTIFICADOR": "Sistema",
+                        "PUNTOCOMA": ";"
+                      },
+                      "IMPORT": {
+                        "TIPO": "IMPORTACION",
+                        "IDENTIFICADOR": "Node",
+                        "PUNTOCOMA": ";"
+                      }
+                    },
+                    "IMPORT": {
+                      "TIPO": "IMPORTACION",
+                      "IDENTIFICADOR": "JTable",
+                      "PUNTOCOMA": ";"
+                    }
+                  },
+                  "IMPORT": {
+                    "TIPO": "IMPORTACION",
+                    "IDENTIFICADOR": "Bichulga",
+                    "PUNTOCOMA": ";"
+                  }
+                },
+                "IMPORT": {
+                  "TIPO": "IMPORTACION",
+                  "IDENTIFICADOR": "asdf",
+                  "PUNTOCOMA": ";"
+                }
+              },
+              "IMPORT": {
+                "TIPO": "CLASE",
+                "IDENTIFICADOR": "Principal",
+                "BLOQUE_CLASE": {
+                  "LLAVE_ABRE": "{",
+                  "INSTRUCCION": {
+                    "CLASES": {
+                      "CLASES": {
+                        "CLASES": {
+                          "CLASES": {
+                            "CLASES": {
+                              "TIPO": "DECLARACION",
+                              "TIPO_DATO": {
+                                "TIPO": "INT",
+                                "VALOR": "int"
+                              },
+                              "VARIABLE": {
+                                "TIPO": "ASIGNACION",
+                                "IDENTIFICADOR": "a",
+                                "IGUAL": "=",
+                                "EXPRESION": {
+                                  "TIPO": "NUMERO",
+                                  "VALOR": "12"
+                                },
+                                "PUNTOCOMA": ";"
+                              }
+                            },
+                            "CLASE": {
+                              "TIPO": "DECLARACION",
+                              "TIPO_DATO": {
+                                "TIPO": "BOOLEAN",
+                                "VALOR": "boolean"
+                              },
+                              "VARIABLE": {
+                                "TIPO": "ASIGNACION",
+                                "IDENTIFICADOR": "aver",
+                                "IGUAL": "=",
+                                "EXPRESION": {
+                                  "TIPO": "BOOLEAN",
+                                  "VALOR": "false"
+                                },
+                                "PUNTOCOMA": ";"
+                              }
+                            }
+                          },
+                          "CLASE": {
+                            "TIPO": "DECLARACION",
+                            "TIPO_DATO": {
+                              "TIPO": "STRING",
+                              "VALOR": "String"
+                            },
+                            "VARIABLE": {
+                              "TIPO": "ASIGNACION",
+                              "IDENTIFICADOR": "cadenaTextoPrincipal",
+                              "IGUAL": "=",
+                              "EXPRESION": {
+                                "OPERANDO_IZQUIERDO": {
+                                  "TIPO": "CADENA",
+                                  "VALOR": "Los del grupo de Bichulga se copian todos los trabajos de compi"
+                                },
+                                "OPERANDO_DERECHO": {
+                                  "OPERANDO_IZQUIERDO": {
+                                    "TIPO": "ID",
+                                    "VALOR": "a"
+                                  },
+                                  "OPERANDO_DERECHO": {
+                                    "TIPO": "ID",
+                                    "VALOR": "bv"
+                                  },
+                                  "TIPO": "OP_MULTIPLICACION"
+                                },
+                                "TIPO": "OP_SUMA"
+                              },
+                              "PUNTOCOMA": ";"
+                            }
+                          }
+                        },
+                        "CLASE": {
+                          "METODOS": {
+                            "TIPO": "METODO",
+                            "VOID": "void",
+                            "IDENTIFICADOR": "menuAnidado",
+                            "PARENTESIS_ABRE": "(",
+                            "PARENTESIS_CIERRA": ")",
+                            "BLOQUE_METODO": {
+                              "LLAVE_ABRE": "{",
+                              "INSTRUCCION": {
+                                "INSTRUCTIONES": {
+                                  "INSTRUCTIONES": {
+                                    "INSTRUCTIONES": {
+                                      "INSTRUCTIONES": {
+                                        "INSTRUCTIONES": {
+                                          "INSTRUCTIONES": {
+                                            "INSTRUCCION": {
+                                              "TIPO": "IMPRESION",
+                                              "INSTRUCCION": "System.out.println",
+                                              "EXPRESION": {
+                                                "TIPO": "FUNCION",
+                                                "VALOR": {
+                                                  "TIPO": "FUNCION",
+                                                  "IDENTIFICADOR": "imprimeEsto",
+                                                  "PARENTESIS_ABRE": "(",
+                                                  "PARAMETROS": {
+                                                    "TIPO": "CADENA",
+                                                    "VALOR": "MENU PRINCIPAL DE LA APLICACION"
+                                                  },
+                                                  "PARENTESIS_CIERRA": ")",
+                                                  "PUNTOCOMA": ";"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "INSTRUCCION": {
+                                            "TIPO": "IMPRESION",
+                                            "INSTRUCCION": "System.out.println",
+                                            "EXPRESION": {
+                                              "TIPO": "FUNCION",
+                                              "VALOR": {
+                                                "TIPO": "FUNCION",
+                                                "IDENTIFICADOR": "imprimeEsto",
+                                                "PARENTESIS_ABRE": "(",
+                                                "PARAMETROS": {
+                                                  "TIPO": "CADENA",
+                                                  "VALOR": "1. Operaciones Bichulga"
+                                                },
+                                                "PARENTESIS_CIERRA": ")",
+                                                "PUNTOCOMA": ";"
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "INSTRUCCION": {
+                                          "TIPO": "IMPRESION",
+                                          "INSTRUCCION": "System.out.println",
+                                          "EXPRESION": {
+                                            "TIPO": "FUNCION",
+                                            "VALOR": {
+                                              "TIPO": "FUNCION",
+                                              "IDENTIFICADOR": "imprimeEsto",
+                                              "PARENTESIS_ABRE": "(",
+                                              "PARAMETROS": {
+                                                "TIPO": "CADENA",
+                                                "VALOR": "2. Operaciones Aritmeticas"
+                                              },
+                                              "PARENTESIS_CIERRA": ")",
+                                              "PUNTOCOMA": ";"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "INSTRUCCION": {
+                                        "TIPO": "IMPRESION",
+                                        "INSTRUCCION": "System.out.println",
+                                        "EXPRESION": {
+                                          "TIPO": "FUNCION",
+                                          "VALOR": {
+                                            "TIPO": "FUNCION",
+                                            "IDENTIFICADOR": "imprimeEsto",
+                                            "PARENTESIS_ABRE": "(",
+                                            "PARAMETROS": {
+                                              "TIPO": "CADENA",
+                                              "VALOR": "3. Visualizar nodo"
+                                            },
+                                            "PARENTESIS_CIERRA": ")",
+                                            "PUNTOCOMA": ";"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "INSTRUCCION": {
+                                      "TIPO": "IMPRESION",
+                                      "INSTRUCCION": "System.out.println",
+                                      "EXPRESION": {
+                                        "TIPO": "FUNCION",
+                                        "VALOR": {
+                                          "TIPO": "FUNCION",
+                                          "IDENTIFICADOR": "imprimeEsto",
+                                          "PARENTESIS_ABRE": "(",
+                                          "PARAMETROS": {
+                                            "TIPO": "CADENA",
+                                            "VALOR": "4. Ordenamientos"
+                                          },
+                                          "PARENTESIS_CIERRA": ")",
+                                          "PUNTOCOMA": ";"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "INSTRUCCION": {
+                                    "TIPO": "DECLARACION",
+                                    "TIPO_DATO": {
+                                      "TIPO": "STRING",
+                                      "VALOR": "String"
+                                    },
+                                    "VARIABLE": {
+                                      "TIPO": "ASIGNACION",
+                                      "IDENTIFICADOR": "leerTecla",
+                                      "IGUAL": "=",
+                                      "EXPRESION": {
+                                        "TIPO": "FUNCION",
+                                        "VALOR": {
+                                          "TIPO": "FUNCION",
+                                          "IDENTIFICADOR": "leerTecla",
+                                          "PARENTESIS_ABRE": "(",
+                                          "PARENTESIS_CIERRA": ")",
+                                          "PUNTOCOMA": ";"
+                                        }
+                                      },
+                                      "PUNTOCOMA": ";"
+                                    }
+                                  }
+                                },
+                                "INSTRUCCION": {
+                                  "TIPO": "SWITCH",
+                                  "CONDICION": {
+                                    "PARENTESIS_ABRE": "(",
+                                    "EXPRESION": {
+                                      "TIPO": "ID",
+                                      "VALOR": "leerTecla"
+                                    },
+                                    "PARENTESIS_CIERRA": ")"
+                                  },
+                                  "BLOQUE_SWITCH": {
+                                    "LLAVE_ABRE": "{",
+                                    "CASOS": {
+                                      "CASOS": {
+                                        "CASOS": {
+                                          "CASOS": {
+                                            "CASOS": [
+                                              {
+                                                "TIPO": "CASE",
+                                                "EXPRESION": {
+                                                  "TIPO": "CADENA",
+                                                  "VALOR": "1"
+                                                },
+                                                "DOSPUNTOS": ":",
+                                                "INSTRUCCIONES": {
+                                                  "INSTRUCTIONES": {
+                                                    "INSTRUCTIONES": {
+                                                      "INSTRUCTIONES": {
+                                                        "INSTRUCTIONES": {
+                                                          "INSTRUCTIONES": {
+                                                            "INSTRUCTIONES": {
+                                                              "INSTRUCTIONES": {
+                                                                "INSTRUCCION": {
+                                                                  "TIPO": "IMPRESION",
+                                                                  "INSTRUCCION": "System.out.println",
+                                                                  "EXPRESION": {
+                                                                    "TIPO": "FUNCION",
+                                                                    "VALOR": {
+                                                                      "TIPO": "FUNCION",
+                                                                      "IDENTIFICADOR": "imprimeEsto",
+                                                                      "PARENTESIS_ABRE": "(",
+                                                                      "PARAMETROS": {
+                                                                        "TIPO": "CADENA",
+                                                                        "VALOR": "Operaciones Bichulga"
+                                                                      },
+                                                                      "PARENTESIS_CIERRA": ")",
+                                                                      "PUNTOCOMA": ";"
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "INSTRUCCION": {
+                                                                "TIPO": "IMPRESION",
+                                                                "INSTRUCCION": "System.out.println",
+                                                                "EXPRESION": {
+                                                                  "TIPO": "FUNCION",
+                                                                  "VALOR": {
+                                                                    "TIPO": "FUNCION",
+                                                                    "IDENTIFICADOR": "imprimeEsto",
+                                                                    "PARENTESIS_ABRE": "(",
+                                                                    "PARAMETROS": {
+                                                                      "TIPO": "CADENA",
+                                                                      "VALOR": "1. Sacar a Alejandro Sosa"
+                                                                    },
+                                                                    "PARENTESIS_CIERRA": ")",
+                                                                    "PUNTOCOMA": ";"
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "INSTRUCCION": {
+                                                              "TIPO": "IMPRESION",
+                                                              "INSTRUCCION": "System.out.println",
+                                                              "EXPRESION": {
+                                                                "TIPO": "FUNCION",
+                                                                "VALOR": {
+                                                                  "TIPO": "FUNCION",
+                                                                  "IDENTIFICADOR": "imprimeEsto",
+                                                                  "PARENTESIS_ABRE": "(",
+                                                                  "PARAMETROS": {
+                                                                    "TIPO": "CADENA",
+                                                                    "VALOR": "2. Jugar Minecraft"
+                                                                  },
+                                                                  "PARENTESIS_CIERRA": ")",
+                                                                  "PUNTOCOMA": ";"
+                                                                }
+                                                              }
+                                                            }
+                                                          },
+                                                          "INSTRUCCION": {
+                                                            "TIPO": "IMPRESION",
+                                                            "INSTRUCCION": "System.out.println",
+                                                            "EXPRESION": {
+                                                              "TIPO": "FUNCION",
+                                                              "VALOR": {
+                                                                "TIPO": "FUNCION",
+                                                                "IDENTIFICADOR": "imprimeEsto",
+                                                                "PARENTESIS_ABRE": "(",
+                                                                "PARAMETROS": {
+                                                                  "TIPO": "CADENA",
+                                                                  "VALOR": "3. Paja grupal en 5 minutos"
+                                                                },
+                                                                "PARENTESIS_CIERRA": ")",
+                                                                "PUNTOCOMA": ";"
+                                                              }
+                                                            }
+                                                          }
+                                                        },
+                                                        "INSTRUCCION": {
+                                                          "TIPO": "IMPRESION",
+                                                          "INSTRUCCION": "System.out.println",
+                                                          "EXPRESION": {
+                                                            "TIPO": "FUNCION",
+                                                            "VALOR": {
+                                                              "TIPO": "FUNCION",
+                                                              "IDENTIFICADOR": "imprimeEsto",
+                                                              "PARENTESIS_ABRE": "(",
+                                                              "PARAMETROS": {
+                                                                "TIPO": "CADENA",
+                                                                "VALOR": "4. Salir"
+                                                              },
+                                                              "PARENTESIS_CIERRA": ")",
+                                                              "PUNTOCOMA": ";"
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      "INSTRUCCION": {
+                                                        "TIPO": "DECLARACION",
+                                                        "TIPO_DATO": {
+                                                          "TIPO": "STRING",
+                                                          "VALOR": "String"
+                                                        },
+                                                        "VARIABLE": {
+                                                          "TIPO": "ASIGNACION",
+                                                          "IDENTIFICADOR": "leerTecla",
+                                                          "IGUAL": "=",
+                                                          "EXPRESION": {
+                                                            "TIPO": "FUNCION",
+                                                            "VALOR": {
+                                                              "TIPO": "FUNCION",
+                                                              "IDENTIFICADOR": "leerTecla",
+                                                              "PARENTESIS_ABRE": "(",
+                                                              "PARENTESIS_CIERRA": ")",
+                                                              "PUNTOCOMA": ";"
+                                                            }
+                                                          },
+                                                          "PUNTOCOMA": ";"
+                                                        }
+                                                      }
+                                                    },
+                                                    "INSTRUCCION": {
+                                                      "TIPO": "IF",
+                                                      "CONDICION": {
+                                                        "PARENTESIS_ABRE": "(",
+                                                        "EXPRESION": {
+                                                          "OPERANDO_IZQUIERDO": {
+                                                            "OPERANDO_IZQUIERDO": {
+                                                              "OPERANDO_IZQUIERDO": {
+                                                                "TIPO": "ID",
+                                                                "VALOR": "leerTecla"
+                                                              },
+                                                              "OPERANDO_DERECHO": {
+                                                                "TIPO": "CADENA",
+                                                                "VALOR": "1"
+                                                              },
+                                                              "TIPO": "OP_IGUAL_IGUAL"
+                                                            },
+                                                            "OPERANDO_DERECHO": {
+                                                              "OPERANDO_IZQUIERDO": {
+                                                                "TIPO": "ID",
+                                                                "VALOR": "leerTecla"
+                                                              },
+                                                              "OPERANDO_DERECHO": {
+                                                                "OPERANDO_IZQUIERDO": {
+                                                                  "TIPO": "NUMERO",
+                                                                  "VALOR": "1"
+                                                                },
+                                                                "OPERANDO_DERECHO": {
+                                                                  "OPERANDO_IZQUIERDO": {
+                                                                    "TIPO": "NUMERO",
+                                                                    "VALOR": "21"
+                                                                  },
+                                                                  "OPERANDO_DERECHO": {
+                                                                    "TIPO": "NUMERO",
+                                                                    "VALOR": "3111"
+                                                                  },
+                                                                  "TIPO": "OP_MULTIPLICACION"
+                                                                },
+                                                                "TIPO": "OP_SUMA"
+                                                              },
+                                                              "TIPO": "OP_DISTINTO"
+                                                            },
+                                                            "TIPO": "OP_AND"
+                                                          },
+                                                          "OPERANDO_DERECHO": {
+                                                            "OPERANDO_IZQUIERDO": {
+                                                              "TIPO": "NUMERO",
+                                                              "VALOR": "1"
+                                                            },
+                                                            "OPERANDO_DERECHO": "=",
+                                                            "TIPO": "OP_MENOR_IGUAL"
+                                                          },
+                                                          "TIPO": "OP_OR"
+                                                        },
+                                                        "PARENTESIS_CIERRA": ")"
+                                                      },
+                                                      "BLOQUE_INSTRUCCIONES": {
+                                                        "LLAVE_ABRE": "{",
+                                                        "INSTRUCCION": {
+                                                          "INSTRUCCION": {
+                                                            "TIPO": "FUNCION",
+                                                            "IDENTIFICADOR": "CallCisco",
+                                                            "PARENTESIS_ABRE": "(",
+                                                            "PARENTESIS_CIERRA": ")",
+                                                            "PUNTOCOMA": ";"
+                                                          }
+                                                        },
+                                                        "LLAVE_CIERRA": "}"
+                                                      },
+                                                      "ELSE_IF": {
+                                                        "TIPO": "ELSE IF",
+                                                        "IF": {
+                                                          "TIPO": "IF",
+                                                          "CONDICION": {
+                                                            "PARENTESIS_ABRE": "(",
+                                                            "EXPRESION": {
+                                                              "OPERANDO_IZQUIERDO": {
+                                                                "OPERANDO_IZQUIERDO": {
+                                                                  "OPERANDO_IZQUIERDO": {
+                                                                    "TIPO": "ID",
+                                                                    "VALOR": "leerTecla"
+                                                                  },
+                                                                  "OPERANDO_DERECHO": {
+                                                                    "TIPO": "CADENA",
+                                                                    "VALOR": "2"
+                                                                  },
+                                                                  "TIPO": "OP_IGUAL_IGUAL"
+                                                                },
+                                                                "OPERANDO_DERECHO": {
+                                                                  "OPERANDO_IZQUIERDO": {
+                                                                    "TIPO": "ID",
+                                                                    "VALOR": "leerTecla"
+                                                                  },
+                                                                  "OPERANDO_DERECHO": {
+                                                                    "OPERANDO_IZQUIERDO": {
+                                                                      "TIPO": "NUMERO",
+                                                                      "VALOR": "1"
+                                                                    },
+                                                                    "OPERANDO_DERECHO": {
+                                                                      "OPERANDO_IZQUIERDO": {
+                                                                        "TIPO": "NUMERO",
+                                                                        "VALOR": "21"
+                                                                      },
+                                                                      "OPERANDO_DERECHO": {
+                                                                        "TIPO": "NUMERO",
+                                                                        "VALOR": "3111"
+                                                                      },
+                                                                      "TIPO": "OP_MULTIPLICACION"
+                                                                    },
+                                                                    "TIPO": "OP_SUMA"
+                                                                  },
+                                                                  "TIPO": "OP_DISTINTO"
+                                                                },
+                                                                "TIPO": "OP_AND"
+                                                              },
+                                                              "OPERANDO_DERECHO": {
+                                                                "OPERANDO_IZQUIERDO": {
+                                                                  "TIPO": "NUMERO",
+                                                                  "VALOR": "1"
+                                                                },
+                                                                "OPERANDO_DERECHO": "=",
+                                                                "TIPO": "OP_MENOR_IGUAL"
+                                                              },
+                                                              "TIPO": "OP_OR"
+                                                            },
+                                                            "PARENTESIS_CIERRA": ")"
+                                                          },
+                                                          "BLOQUE_INSTRUCCIONES": {
+                                                            "LLAVE_ABRE": "{",
+                                                            "LLAVE_CIERRA": "}"
+                                                          },
+                                                          "ELSE_IF": {
+                                                            "TIPO": "ELSE IF",
+                                                            "IF": {
+                                                              "TIPO": "IF",
+                                                              "CONDICION": {
+                                                                "PARENTESIS_ABRE": "(",
+                                                                "EXPRESION": {
+                                                                  "OPERANDO_IZQUIERDO": {
+                                                                    "OPERANDO_IZQUIERDO": {
+                                                                      "OPERANDO_IZQUIERDO": {
+                                                                        "TIPO": "ID",
+                                                                        "VALOR": "leerTecla"
+                                                                      },
+                                                                      "OPERANDO_DERECHO": {
+                                                                        "TIPO": "CADENA",
+                                                                        "VALOR": "3"
+                                                                      },
+                                                                      "TIPO": "OP_IGUAL_IGUAL"
+                                                                    },
+                                                                    "OPERANDO_DERECHO": {
+                                                                      "OPERANDO_IZQUIERDO": {
+                                                                        "TIPO": "ID",
+                                                                        "VALOR": "leerTecla"
+                                                                      },
+                                                                      "OPERANDO_DERECHO": {
+                                                                        "OPERANDO_IZQUIERDO": {
+                                                                          "TIPO": "CADENA",
+                                                                          "VALOR": "dnicsa"
+                                                                        },
+                                                                        "OPERANDO_DERECHO": {
+                                                                          "OPERANDO_IZQUIERDO": {
+                                                                            "TIPO": "NUMERO",
+                                                                            "VALOR": "21"
+                                                                          },
+                                                                          "OPERANDO_DERECHO": {
+                                                                            "TIPO": "ID",
+                                                                            "VALOR": "dsa"
+                                                                          },
+                                                                          "TIPO": "OP_MULTIPLICACION"
+                                                                        },
+                                                                        "TIPO": "OP_SUMA"
+                                                                      },
+                                                                      "TIPO": "OP_DISTINTO"
+                                                                    },
+                                                                    "TIPO": "OP_AND"
+                                                                  },
+                                                                  "OPERANDO_DERECHO": {
+                                                                    "OPERANDO_IZQUIERDO": {
+                                                                      "TIPO": "NUMERO",
+                                                                      "VALOR": "1"
+                                                                    },
+                                                                    "OPERANDO_DERECHO": "=",
+                                                                    "TIPO": "OP_MENOR_IGUAL"
+                                                                  },
+                                                                  "TIPO": "OP_OR"
+                                                                },
+                                                                "PARENTESIS_CIERRA": ")"
+                                                              },
+                                                              "BLOQUE_INSTRUCCIONES": {
+                                                                "LLAVE_ABRE": "{",
+                                                                "INSTRUCCION": {
+                                                                  "INSTRUCTIONES": {
+                                                                    "INSTRUCCION": {
+                                                                      "TIPO": "IMPRESION",
+                                                                      "INSTRUCCION": "System.out.println",
+                                                                      "EXPRESION": {
+                                                                        "TIPO": "CADENA",
+                                                                        "VALOR": "Atentos que toca la paja grupal en 5 minutos... Corran para llegar a tiempo"
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  "INSTRUCCION": {
+                                                                    "TIPO": "FUNCION",
+                                                                    "IDENTIFICADOR": "PajaGrupal",
+                                                                    "PARENTESIS_ABRE": "(",
+                                                                    "PARENTESIS_CIERRA": ")",
+                                                                    "PUNTOCOMA": ";"
+                                                                  }
+                                                                },
+                                                                "LLAVE_CIERRA": "}"
+                                                              },
+                                                              "ELSE_IF": {
+                                                                "TIPO": "ELSE IF",
+                                                                "IF": {
+                                                                  "TIPO": "IF",
+                                                                  "CONDICION": {
+                                                                    "PARENTESIS_ABRE": "(",
+                                                                    "EXPRESION": {
+                                                                      "OPERANDO_IZQUIERDO": {
+                                                                        "OPERANDO_IZQUIERDO": {
+                                                                          "OPERANDO_IZQUIERDO": {
+                                                                            "TIPO": "ID",
+                                                                            "VALOR": "leerTecla"
+                                                                          },
+                                                                          "OPERANDO_DERECHO": {
+                                                                            "TIPO": "CADENA",
+                                                                            "VALOR": "4"
+                                                                          },
+                                                                          "TIPO": "OP_IGUAL_IGUAL"
+                                                                        },
+                                                                        "OPERANDO_DERECHO": {
+                                                                          "OPERANDO_IZQUIERDO": {
+                                                                            "TIPO": "ID",
+                                                                            "VALOR": "leerTecla"
+                                                                          },
+                                                                          "OPERANDO_DERECHO": {
+                                                                            "OPERANDO_IZQUIERDO": {
+                                                                              "TIPO": "NUMERO",
+                                                                              "VALOR": "1"
+                                                                            },
+                                                                            "OPERANDO_DERECHO": {
+                                                                              "OPERANDO_IZQUIERDO": {
+                                                                                "TIPO": "NUMERO",
+                                                                                "VALOR": "21"
+                                                                              },
+                                                                              "OPERANDO_DERECHO": {
+                                                                                "TIPO": "NUMERO",
+                                                                                "VALOR": "3111"
+                                                                              },
+                                                                              "TIPO": "OP_MULTIPLICACION"
+                                                                            },
+                                                                            "TIPO": "OP_SUMA"
+                                                                          },
+                                                                          "TIPO": "OP_DISTINTO"
+                                                                        },
+                                                                        "TIPO": "OP_AND"
+                                                                      },
+                                                                      "OPERANDO_DERECHO": {
+                                                                        "OPERANDO_IZQUIERDO": {
+                                                                          "TIPO": "NUMERO",
+                                                                          "VALOR": "1"
+                                                                        },
+                                                                        "OPERANDO_DERECHO": "=",
+                                                                        "TIPO": "OP_MENOR_IGUAL"
+                                                                      },
+                                                                      "TIPO": "OP_OR"
+                                                                    },
+                                                                    "PARENTESIS_CIERRA": ")"
+                                                                  },
+                                                                  "BLOQUE_INSTRUCCIONES": {
+                                                                    "LLAVE_ABRE": "{",
+                                                                    "INSTRUCCION": {
+                                                                      "INSTRUCTIONES": {
+                                                                        "INSTRUCCION": {
+                                                                          "TIPO": "IMPRESION",
+                                                                          "INSTRUCCION": "System.out.println",
+                                                                          "EXPRESION": {
+                                                                            "TIPO": "CADENA",
+                                                                            "VALOR": "Salir del sistema Bichulga..."
+                                                                          }
+                                                                        }
+                                                                      },
+                                                                      "INSTRUCCION": {
+                                                                        "TIPO": "FUNCION",
+                                                                        "IDENTIFICADOR": "menuAnidado",
+                                                                        "PARENTESIS_ABRE": "(",
+                                                                        "PARENTESIS_CIERRA": ")",
+                                                                        "PUNTOCOMA": ";"
+                                                                      }
+                                                                    },
+                                                                    "LLAVE_CIERRA": "}"
+                                                                  },
+                                                                  "ELSE_IF": {
+                                                                    "TIPO": "ELSE IF",
+                                                                    "IF": {
+                                                                      "TIPO": "IF",
+                                                                      "CONDICION": {
+                                                                        "PARENTESIS_ABRE": "(",
+                                                                        "EXPRESION": {
+                                                                          "OPERANDO_IZQUIERDO": {
+                                                                            "TIPO": "ID",
+                                                                            "VALOR": "b"
+                                                                          },
+                                                                          "TIPO": "OP_NOT"
+                                                                        },
+                                                                        "PARENTESIS_CIERRA": ")"
+                                                                      },
+                                                                      "BLOQUE_INSTRUCCIONES": {
+                                                                        "LLAVE_ABRE": "{",
+                                                                        "LLAVE_CIERRA": "}"
+                                                                      },
+                                                                      "ELSE": {
+                                                                        "TIPO": "ELSE",
+                                                                        "BLOQUE_INSTRUCCIONES": {
+                                                                          "LLAVE_ABRE": "{",
+                                                                          "LLAVE_CIERRA": "}"
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "INSTRUCCION": {
+                                                    "TIPO": "BREAK",
+                                                    "PUNTOCOMA": ";"
+                                                  }
+                                                }
+                                              }
+                                            ],
+                                            "CASO": {
+                                              "TIPO": "CASE",
+                                              "EXPRESION": {
+                                                "OPERANDO_IZQUIERDO": {
+                                                  "TIPO": "NUMERO",
+                                                  "VALOR": "1"
+                                                },
+                                                "OPERANDO_DERECHO": {
+                                                  "TIPO": "NUMERO",
+                                                  "VALOR": "1"
+                                                },
+                                                "TIPO": "OP_SUMA"
+                                              },
+                                              "DOSPUNTOS": ":",
+                                              "INSTRUCCIONES": {
+                                                "INSTRUCCION": {
+                                                  "TIPO": "BREAK",
+                                                  "PUNTOCOMA": ";"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "CASO": {
+                                            "TIPO": "CASE",
+                                            "EXPRESION": {
+                                              "TIPO": "CADENA",
+                                              "VALOR": "3"
+                                            },
+                                            "DOSPUNTOS": ":",
+                                            "INSTRUCCIONES": {
+                                              "INSTRUCCION": {
+                                                "TIPO": "BREAK",
+                                                "PUNTOCOMA": ";"
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "CASO": {
+                                          "TIPO": "CASE",
+                                          "EXPRESION": {
+                                            "TIPO": "NUMERO",
+                                            "VALOR": "4"
+                                          },
+                                          "DOSPUNTOS": ":",
+                                          "INSTRUCCIONES": {
+                                            "INSTRUCCION": {
+                                              "TIPO": "BREAK",
+                                              "PUNTOCOMA": ";"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "CASO": {
+                                        "TIPO": "DEFAULT",
+                                        "DOSPUNTOS": ":",
+                                        "INSTRUCCION": {
+                                          "INSTRUCTIONES": {
+                                            "INSTRUCTIONES": {
+                                              "INSTRUCCION": {
+                                                "TIPO": "IMPRESION",
+                                                "INSTRUCCION": "System.out.println",
+                                                "EXPRESION": {
+                                                  "TIPO": "CADENA",
+                                                  "VALOR": "Teclee una opcion correcta prro"
+                                                }
+                                              }
+                                            },
+                                            "INSTRUCCION": {
+                                              "TIPO": "FUNCION",
+                                              "IDENTIFICADOR": "menuAnidado",
+                                              "PARENTESIS_ABRE": "(",
+                                              "PARENTESIS_CIERRA": ")",
+                                              "PUNTOCOMA": ";"
+                                            }
+                                          },
+                                          "INSTRUCCION": {
+                                            "TIPO": "BREAK",
+                                            "PUNTOCOMA": ";"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "LLAVE_CIERRA": "}"
+                                  }
+                                }
+                              },
+                              "LLAVE_CIERRA": "}"
+                            }
+                          }
+                        }
+                      },
+                      "CLASE": {
+                        "FUNCIONES": {
+                          "TIPO": "FUNCION",
+                          "TIPO_DATO": {
+                            "TIPO": "STRING",
+                            "VALOR": "String"
+                          },
+                          "IDENTIFICADOR": "imprimeEsto",
+                          "PARENTESIS_ABRE": "(",
+                          "PARAMETROS": {
+                            "TIPO": "PARAMETRO",
+                            "TIPO_DATO": {
+                              "TIPO": "STRING",
+                              "VALOR": "String"
+                            },
+                            "identificador": "cadena"
+                          },
+                          "PARENTESIS_CIERRA": ")",
+                          "BLOQUE_METODO": {
+                            "LLAVE_ABRE": "{",
+                            "INSTRUCCION": {
+                              "INSTRUCCION": {
+                                "TIPO": "RETURN",
+                                "EXPRESION": {
+                                  "TIPO": "ID",
+                                  "VALOR": "cadena"
+                                },
+                                "PUNTOCOMA": ";"
+                              }
+                            },
+                            "LLAVE_CIERRA": "}"
+                          }
+                        }
+                      }
+                    },
+                    "CLASE": {
+                      "FUNCIONES": {
+                        "TIPO": "FUNCION",
+                        "TIPO_DATO": {
+                          "VALOR": "char"
+                        },
+                        "IDENTIFICADOR": "leerTecla",
+                        "PARENTESIS_ABRE": "(",
+                        "PARENTESIS_CIERRA": ")",
+                        "BLOQUE_METODO": {
+                          "LLAVE_ABRE": "{",
+                          "INSTRUCCION": {
+                            "INSTRUCCION": {
+                              "TIPO": "FUNCION",
+                              "IDENTIFICADOR": "LeerSistema",
+                              "PARENTESIS_ABRE": "(",
+                              "PARENTESIS_CIERRA": ")",
+                              "PUNTOCOMA": ";"
+                            }
+                          },
+                          "LLAVE_CIERRA": "}"
+                        }
+                      }
+                    }
+                  },
+                  "LLAVE_CIERRA": "}"
+                }
+              }
+            },
+            "IMPORT": {
+              "TIPO": "CLASE",
+              "IDENTIFICADOR": "Aritmetica",
+              "BLOQUE_CLASE": {
+                "LLAVE_ABRE": "{",
+                "INSTRUCCION": {
+                  "CLASES": {
+                    "CLASES": {
+                      "CLASES": {
+                        "CLASES": {
+                          "CLASES": {
+                            "CLASES": {
+                              "FUNCIONES": {
+                                "TIPO": "FUNCION",
+                                "TIPO_DATO": {
+                                  "TIPO": "INT",
+                                  "VALOR": "int"
+                                },
+                                "IDENTIFICADOR": "suma",
+                                "PARENTESIS_ABRE": "(",
+                                "PARAMETROS": {
+                                  "PRAMETROS": {
+                                    "TIPO": "PARAMETRO",
+                                    "TIPO_DATO": {
+                                      "TIPO": "DOUBLE",
+                                      "VALOR": "double"
+                                    },
+                                    "identificador": "a"
+                                  },
+                                  "COMA": ",",
+                                  "PARAMETRO": {
+                                    "TIPO": "PARAMETRO",
+                                    "TIPO_DATO": {
+                                      "TIPO": "INT",
+                                      "VALOR": "int"
+                                    },
+                                    "identificador": "b"
+                                  }
+                                },
+                                "PARENTESIS_CIERRA": ")",
+                                "BLOQUE_METODO": {
+                                  "LLAVE_ABRE": "{",
+                                  "INSTRUCCION": {
+                                    "INSTRUCCION": {
+                                      "TIPO": "RETURN",
+                                      "EXPRESION": {
+                                        "OPERANDO_IZQUIERDO": {
+                                          "TIPO": "ID",
+                                          "VALOR": "a"
+                                        },
+                                        "OPERANDO_DERECHO": {
+                                          "TIPO": "ID",
+                                          "VALOR": "b"
+                                        },
+                                        "TIPO": "OP_SUMA"
+                                      },
+                                      "PUNTOCOMA": ";"
+                                    }
+                                  },
+                                  "LLAVE_CIERRA": "}"
+                                }
+                              }
+                            },
+                            "CLASE": {
+                              "FUNCIONES": {
+                                "TIPO": "FUNCION",
+                                "TIPO_DATO": {
+                                  "TIPO": "DOUBLE",
+                                  "VALOR": "double"
+                                },
+                                "IDENTIFICADOR": "resta",
+                                "PARENTESIS_ABRE": "(",
+                                "PARAMETROS": {
+                                  "PRAMETROS": {
+                                    "TIPO": "PARAMETRO",
+                                    "TIPO_DATO": {
+                                      "TIPO": "INT",
+                                      "VALOR": "int"
+                                    },
+                                    "identificador": "a"
+                                  },
+                                  "COMA": ",",
+                                  "PARAMETRO": {
+                                    "TIPO": "PARAMETRO",
+                                    "TIPO_DATO": {
+                                      "TIPO": "BOOLEAN",
+                                      "VALOR": "boolean"
+                                    },
+                                    "identificador": "b"
+                                  }
+                                },
+                                "PARENTESIS_CIERRA": ")",
+                                "BLOQUE_METODO": {
+                                  "LLAVE_ABRE": "{",
+                                  "INSTRUCCION": {
+                                    "INSTRUCCION": {
+                                      "TIPO": "RETURN",
+                                      "EXPRESION": {
+                                        "OPERANDO_IZQUIERDO": {
+                                          "TIPO": "ID",
+                                          "VALOR": "a"
+                                        },
+                                        "OPERANDO_DERECHO": {
+                                          "TIPO": "ID",
+                                          "VALOR": "b"
+                                        },
+                                        "TIPO": "OP_RESTA"
+                                      },
+                                      "PUNTOCOMA": ";"
+                                    }
+                                  },
+                                  "LLAVE_CIERRA": "}"
+                                }
+                              }
+                            }
+                          },
+                          "CLASE": {
+                            "FUNCIONES": {
+                              "TIPO": "FUNCION",
+                              "TIPO_DATO": {
+                                "TIPO": "DOUBLE",
+                                "VALOR": "double"
+                              },
+                              "IDENTIFICADOR": "multi",
+                              "PARENTESIS_ABRE": "(",
+                              "PARAMETROS": {
+                                "PRAMETROS": {
+                                  "TIPO": "PARAMETRO",
+                                  "TIPO_DATO": {
+                                    "TIPO": "INT",
+                                    "VALOR": "int"
+                                  },
+                                  "identificador": "a"
+                                },
+                                "COMA": ",",
+                                "PARAMETRO": {
+                                  "TIPO": "PARAMETRO",
+                                  "TIPO_DATO": {
+                                    "TIPO": "INT",
+                                    "VALOR": "int"
+                                  },
+                                  "identificador": "b"
+                                }
+                              },
+                              "PARENTESIS_CIERRA": ")",
+                              "BLOQUE_METODO": {
+                                "LLAVE_ABRE": "{",
+                                "INSTRUCCION": {
+                                  "INSTRUCCION": {
+                                    "TIPO": "RETURN",
+                                    "EXPRESION": {
+                                      "OPERANDO_IZQUIERDO": {
+                                        "TIPO": "ID",
+                                        "VALOR": "a"
+                                      },
+                                      "OPERANDO_DERECHO": {
+                                        "TIPO": "ID",
+                                        "VALOR": "b"
+                                      },
+                                      "TIPO": "OP_MULTIPLICACION"
+                                    },
+                                    "PUNTOCOMA": ";"
+                                  }
+                                },
+                                "LLAVE_CIERRA": "}"
+                              }
+                            }
+                          }
+                        },
+                        "CLASE": {
+                          "FUNCIONES": {
+                            "TIPO": "FUNCION",
+                            "TIPO_DATO": {
+                              "TIPO": "DOUBLE",
+                              "VALOR": "double"
+                            },
+                            "IDENTIFICADOR": "div",
+                            "PARENTESIS_ABRE": "(",
+                            "PARAMETROS": {
+                              "PRAMETROS": {
+                                "TIPO": "PARAMETRO",
+                                "TIPO_DATO": {
+                                  "TIPO": "INT",
+                                  "VALOR": "int"
+                                },
+                                "identificador": "a"
+                              },
+                              "COMA": ",",
+                              "PARAMETRO": {
+                                "TIPO": "PARAMETRO",
+                                "TIPO_DATO": {
+                                  "TIPO": "INT",
+                                  "VALOR": "int"
+                                },
+                                "identificador": "b"
+                              }
+                            },
+                            "PARENTESIS_CIERRA": ")",
+                            "BLOQUE_METODO": {
+                              "LLAVE_ABRE": "{",
+                              "INSTRUCCION": {
+                                "INSTRUCCION": {
+                                  "TIPO": "RETURN",
+                                  "EXPRESION": {
+                                    "OPERANDO_IZQUIERDO": {
+                                      "TIPO": "ID",
+                                      "VALOR": "a"
+                                    },
+                                    "OPERANDO_DERECHO": {
+                                      "TIPO": "ID",
+                                      "VALOR": "b"
+                                    },
+                                    "TIPO": "OP_DIVISION"
+                                  },
+                                  "PUNTOCOMA": ";"
+                                }
+                              },
+                              "LLAVE_CIERRA": "}"
+                            }
+                          }
+                        }
+                      },
+                      "CLASE": {
+                        "FUNCIONES": {
+                          "TIPO": "FUNCION",
+                          "TIPO_DATO": {
+                            "TIPO": "INT",
+                            "VALOR": "int"
+                          },
+                          "IDENTIFICADOR": "potencia",
+                          "PARENTESIS_ABRE": "(",
+                          "PARAMETROS": {
+                            "PRAMETROS": {
+                              "TIPO": "PARAMETRO",
+                              "TIPO_DATO": {
+                                "TIPO": "INT",
+                                "VALOR": "int"
+                              },
+                              "identificador": "a"
+                            },
+                            "COMA": ",",
+                            "PARAMETRO": {
+                              "TIPO": "PARAMETRO",
+                              "TIPO_DATO": {
+                                "TIPO": "STRING",
+                                "VALOR": "String"
+                              },
+                              "identificador": "b"
+                            }
+                          },
+                          "PARENTESIS_CIERRA": ")",
+                          "BLOQUE_METODO": {
+                            "LLAVE_ABRE": "{",
+                            "INSTRUCCION": {
+                              "INSTRUCCION": {
+                                "TIPO": "RETURN",
+                                "EXPRESION": {
+                                  "OPERANDO_IZQUIERDO": {
+                                    "TIPO": "ID",
+                                    "VALOR": "a"
+                                  },
+                                  "OPERANDO_DERECHO": {
+                                    "TIPO": "ID",
+                                    "VALOR": "b"
+                                  },
+                                  "TIPO": "OP_POTENCIA"
+                                },
+                                "PUNTOCOMA": ";"
+                              }
+                            },
+                            "LLAVE_CIERRA": "}"
+                          }
+                        }
+                      }
+                    },
+                    "CLASE": {
+                      "FUNCIONES": {
+                        "TIPO": "FUNCION",
+                        "TIPO_DATO": {
+                          "TIPO": "STRING",
+                          "VALOR": "String"
+                        },
+                        "IDENTIFICADOR": "modulo",
+                        "PARENTESIS_ABRE": "(",
+                        "PARAMETROS": {
+                          "PRAMETROS": {
+                            "TIPO": "PARAMETRO",
+                            "TIPO_DATO": {
+                              "TIPO": "INT",
+                              "VALOR": "int"
+                            },
+                            "identificador": "a"
+                          },
+                          "COMA": ",",
+                          "PARAMETRO": {
+                            "TIPO": "PARAMETRO",
+                            "TIPO_DATO": {
+                              "TIPO": "INT",
+                              "VALOR": "int"
+                            },
+                            "identificador": "b"
+                          }
+                        },
+                        "PARENTESIS_CIERRA": ")",
+                        "BLOQUE_METODO": {
+                          "LLAVE_ABRE": "{",
+                          "INSTRUCCION": {
+                            "INSTRUCCION": {
+                              "TIPO": "RETURN",
+                              "EXPRESION": {
+                                "OPERANDO_IZQUIERDO": {
+                                  "TIPO": "ID",
+                                  "VALOR": "a"
+                                },
+                                "OPERANDO_DERECHO": {
+                                  "TIPO": "ID",
+                                  "VALOR": "b"
+                                },
+                                "TIPO": "OP_MODULO"
+                              },
+                              "PUNTOCOMA": ";"
+                            }
+                          },
+                          "LLAVE_CIERRA": "}"
+                        }
+                      }
+                    }
+                  },
+                  "CLASE": {
+                    "METODOS": {
+                      "TIPO": "METODO",
+                      "VOID": "void",
+                      "IDENTIFICADOR": "main",
+                      "PARENTESIS_ABRE": "(",
+                      "PARENTESIS_CIERRA": ")",
+                      "BLOQUE_METODO": {
+                        "LLAVE_ABRE": "{",
+                        "INSTRUCCION": ")",
+                        "LLAVE_CIERRA": "}"
+                      }
+                    }
+                  }
+                },
+                "LLAVE_CIERRA": "}"
+              }
+            }
+          },
+          "IMPORT": {
+            "TIPO": "CLASE",
+            "IDENTIFICADOR": "Bigulga",
+            "BLOQUE_CLASE": {
+              "LLAVE_ABRE": "{",
+              "LLAVE_CIERRA": "}"
+            }
+          }
+        },
+        "IMPORT": {
+          "TIPO": "CLASE",
+          "IDENTIFICADOR": "Node",
+          "BLOQUE_CLASE": {
+            "LLAVE_ABRE": "{",
+            "LLAVE_CIERRA": "}"
+          }
+        }
+      },
+      "IMPORT": {
+        "TIPO": "CLASE",
+        "IDENTIFICADOR": "BubblueSort",
+        "BLOQUE_CLASE": {
+          "LLAVE_ABRE": "{",
+          "LLAVE_CIERRA": "}"
+        }
+      }
+    },
+    "IMPORT": {
+      "TIPO": "CLASE",
+      "IDENTIFICADOR": "QuickSort",
+      "BLOQUE_CLASE": {
+        "LLAVE_ABRE": "{",
+        "INSTRUCCION": "asdf",
+        "LLAVE_CIERRA": "}"
+      }
+    }
+  },
+  "IMPORT": {
+    "TIPO": "CLASE",
+    "IDENTIFICADOR": "ShellSort",
+    "BLOQUE_CLASE": {
+      "LLAVE_ABRE": "{",
+      "LLAVE_CIERRA": "}"
+    }
+  }
+}
