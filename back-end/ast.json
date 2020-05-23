@@ -9,25 +9,32 @@
                 "IMPORTACIONES": {
                   "IMPORTACIONES": {
                     "IMPORTACIONES": {
-                      "TIPO": "IMPORTACION",
-                      "IDENTIFICADOR": "Sistema",
-                      "PUNTOCOMA": ";"
+                      "IMPORTACIONES": {
+                        "TIPO": "IMPORTACION",
+                        "IDENTIFICADOR": "Sistema",
+                        "PUNTOCOMA": ";"
+                      },
+                      "IMPORT": {
+                        "TIPO": "IMPORTACION",
+                        "IDENTIFICADOR": "Node",
+                        "PUNTOCOMA": ";"
+                      }
                     },
                     "IMPORT": {
                       "TIPO": "IMPORTACION",
-                      "IDENTIFICADOR": "Node",
+                      "IDENTIFICADOR": "JTable",
                       "PUNTOCOMA": ";"
                     }
                   },
                   "IMPORT": {
                     "TIPO": "IMPORTACION",
-                    "IDENTIFICADOR": "JTable",
+                    "IDENTIFICADOR": "Bichulga",
                     "PUNTOCOMA": ";"
                   }
                 },
                 "IMPORT": {
                   "TIPO": "IMPORTACION",
-                  "IDENTIFICADOR": "Bichulga",
+                  "IDENTIFICADOR": "asdf",
                   "PUNTOCOMA": ";"
                 }
               },
@@ -687,11 +694,32 @@
                                                                     },
                                                                     "LLAVE_CIERRA": "}"
                                                                   },
-                                                                  "ELSE": {
-                                                                    "TIPO": "ELSE",
-                                                                    "BLOQUE_INSTRUCCIONES": {
-                                                                      "LLAVE_ABRE": "{",
-                                                                      "LLAVE_CIERRA": "}"
+                                                                  "ELSE_IF": {
+                                                                    "TIPO": "ELSE IF",
+                                                                    "IF": {
+                                                                      "TIPO": "IF",
+                                                                      "CONDICION": {
+                                                                        "PARENTESIS_ABRE": "(",
+                                                                        "EXPRESION": {
+                                                                          "OPERANDO_IZQUIERDO": {
+                                                                            "TIPO": "ID",
+                                                                            "VALOR": "b"
+                                                                          },
+                                                                          "TIPO": "OP_NOT"
+                                                                        },
+                                                                        "PARENTESIS_CIERRA": ")"
+                                                                      },
+                                                                      "BLOQUE_INSTRUCCIONES": {
+                                                                        "LLAVE_ABRE": "{",
+                                                                        "LLAVE_CIERRA": "}"
+                                                                      },
+                                                                      "ELSE": {
+                                                                        "TIPO": "ELSE",
+                                                                        "BLOQUE_INSTRUCCIONES": {
+                                                                          "LLAVE_ABRE": "{",
+                                                                          "LLAVE_CIERRA": "}"
+                                                                        }
+                                                                      }
                                                                     }
                                                                   }
                                                                 }
@@ -1243,6 +1271,7 @@
       "IDENTIFICADOR": "QuickSort",
       "BLOQUE_CLASE": {
         "LLAVE_ABRE": "{",
+        "INSTRUCCION": "asdf",
         "LLAVE_CIERRA": "}"
       }
     }

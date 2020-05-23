@@ -112,14 +112,14 @@
 
 <<EOF>>                             return 'EOF';
 
-.                                   {$$ = ERRORES.nuevoError(ERRORES.error(yytext, yylloc.first_line, yylloc.column, "Lexico")); }
+.                                   { console.error('Este es un error léxico: ' + yytext + ', en la linea: ' + yylloc.first_line + ', en la columna: ' + yylloc.first_column); }
 
 /lex
 
 %{
 	const OPERATION_VALUE	= require('../Instrucciones/instrucciones').OPERATION_VALUE;
-	const VALUE_TYPES 		= require('../Instrucciones/instrucciones').VALUE_TYPES;
-	const TYPES			= require('../Instrucciones/instrucciones').TYPES; 
+	const VALUE_TYPES 	= require('../Instrucciones/instrucciones').VALUE_TYPES;
+	const TYPES		= require('../Instrucciones/instrucciones').TYPES; 
 	const instruccionesAPI	= require('../Instrucciones/instrucciones').instruccionesAPI;
 %}
         
@@ -157,7 +157,7 @@ IMPORTACIONES
 
 IMPORTACION
         : ID S_PUNTOCOMA      { $$ = instruccionesAPI.nuevoImport($1); }
-        | S_PUNTOCOMA         {ERRORES.nuevoError(ERRORES.error(yy.parser.hash.token, @1.first_line, @1.first_column, "Sintactico")); }
+        | S_PUNTOCOMA         { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 
 CLASE
@@ -173,6 +173,7 @@ CUERPO
 CUERPOPRIMA
         : DECLARACIONES S_PUNTOCOMA { $$ = $1;}
         | FUNCIONES                 { $$ = $1; }
+        | ID S_PUNTOCOMA                         { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 
 DECLARACIONES 
@@ -187,6 +188,7 @@ DECLARACION
 DECLARACIONPRIMA
         : ID                    { $$ = $1; }
         | ID S_IGUAL EXPRESION  { $$ = instruccionesAPI.nuevoAsignacion($1, $3); }
+        | S_PUNTOCOMA           { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 
 FUNCIONES 
@@ -203,6 +205,7 @@ PARAMETROS
 LISTA_PARAMETRO
         : LISTA_PARAMETRO S_COMA PARAMETRO      { $$ = instruccionesAPI.nuevoParametros($1, $2, $3); }
         | PARAMETRO                             { $$ = $1; }
+        | S_PUNTOCOMA                           { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 
 PARAMETRO
@@ -232,6 +235,7 @@ INSTRUCCION
         | BREAK                         { $$ = $1; }
         | CONTINUE                      { $$ = $1; }
         | RETURN                        { $$ = $1; }
+        | ID S_PUNTOCOMA                         { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 
 ASIGNACION
