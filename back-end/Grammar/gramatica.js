@@ -86,10 +86,10 @@ switch (yystate) {
 case 1:
  return $$[$0-1]; 
 break;
-case 2: case 9: case 57:
- $$[$0-1].push($$[$0]); this.$ = $$[$0-1]; 
+case 2:
+ this.$ = instruccionesAPI.nuevoImports($$[$0-1], $$[$0]); 
 break;
-case 3: case 4: case 5: case 10: case 12: case 24: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 48: case 50: case 51: case 64: case 65:
+case 3: case 4: case 5: case 10: case 12: case 16: case 24: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 48: case 50: case 51: case 64: case 65:
  this.$ = $$[$0]; 
 break;
 case 6:
@@ -100,6 +100,9 @@ case 7:
 break;
 case 8:
  this.$ = instruccionesAPI.nuevoClase($$[$0-2], undefined);
+break;
+case 9:
+ this.$ = instruccionesAPI.nuevoClases($$[$0-1], $$[$0]); 
 break;
 case 11:
  this.$ = $$[$0-1];
@@ -112,9 +115,6 @@ case 14:
 break;
 case 15:
  this.$ = $$[$0];
-break;
-case 16:
- this.$ = $$[$0] 
 break;
 case 17: case 42:
  this.$ = instruccionesAPI.nuevoAsignacion($$[$0-2], $$[$0]); 
@@ -179,6 +179,9 @@ break;
 case 56:
  this.$ = instruccionesAPI.nuevoSwitch($$[$0-3], $$[$0-1]); 
 break;
+case 57:
+ this.$ = instruccionesAPI.nuevoCasos($$[$0-1], $$[$0]); 
+break;
 case 58:
  this.$ = instruccionesAPI.nuevoListaCasos($$[$0]); 
 break;
@@ -198,10 +201,10 @@ case 63:
  this.$ = instruccionesAPI.nuevoFor($$[$0-6], $$[$0-4], $$[$0-2], $$[$0]); 
 break;
 case 66:
- this.$ = instruccionesAPI.operacionUnaria(OPERATION_VALUE.AUMENTO); 
+ this.$ = instruccionesAPI.nuevoOperacionUnaria(OPERATION_VALUE.AUMENTO); 
 break;
 case 67:
- this.$ = instruccionesAPI.operacionUnaria(OPERATION_VALUE.DECREMENTO); 
+ this.$ = instruccionesAPI.nuevoOperacionUnaria(OPERATION_VALUE.DECREMENTO); 
 break;
 case 68:
  this.$ = instruccionesAPI.nuevoBreak(); 
@@ -246,52 +249,52 @@ case 81:
  this.$ = instruccionesAPI.nuevoOperador(OPERATION_VALUE.MODULO_IGUAL); 
 break;
 case 82:
- this.$ = instruccionesAPI.operacionUnaria($$[$0], OPERATION_VALUE.NEGATIVO); 
+ this.$ = instruccionesAPI.nuevoOperacionUnaria($$[$0], OPERATION_VALUE.NEGATIVO); 
 break;
 case 83:
- this.$ = instruccionesAPI.operacionUnaria($$[$0], OPERATION_VALUE.NOT); 
+ this.$ = instruccionesAPI.nuevoOperacionUnaria($$[$0], OPERATION_VALUE.NOT); 
 break;
 case 84:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.SUMA); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.SUMA); 
 break;
 case 85:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.RESTA); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.RESTA); 
 break;
 case 86:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.MULTIPLICACION); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.MULTIPLICACION); 
 break;
 case 87:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.DIVISION); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.DIVISION); 
 break;
 case 88:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.MODULO); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.MODULO); 
 break;
 case 89:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.POTENCIA); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.POTENCIA); 
 break;
 case 90:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.AND); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.AND); 
 break;
 case 91:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.OR); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.OR); 
 break;
 case 92:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.IGUAL_IGUAL); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.IGUAL_IGUAL); 
 break;
 case 93:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.DISTINTO); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.DISTINTO); 
 break;
 case 94:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-3], $$[$0-1], OPERATION_VALUE.MENOR_IGUAL); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-3], $$[$0-1], OPERATION_VALUE.MENOR_IGUAL); 
 break;
 case 95:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.MENOR_QUE); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.MENOR_QUE); 
 break;
 case 96:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-3], $$[$0-1], OPERATION_VALUE.MAYOR_IGUAL); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-3], $$[$0-1], OPERATION_VALUE.MAYOR_IGUAL); 
 break;
 case 97:
- this.$ = instruccionesAPI.operacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.MAYOR_QUE); 
+ this.$ = instruccionesAPI.nuevoOperacionBinaria($$[$0-2], $$[$0], OPERATION_VALUE.MAYOR_QUE); 
 break;
 case 99:
  this.$ = instruccionesAPI.nuevoValor($$[$0], VALUE_TYPES.NUMERO); 
@@ -462,7 +465,7 @@ parse: function parse(input) {
     return true;
 }};
 
-        const errores			= require('../Instrucciones/instrucciones').ERRORES; 
+        const ERRORES			= require('../Instrucciones/instrucciones').ERRORES; 
 
 	const OPERATION_VALUE	= require('../Instrucciones/instrucciones').OPERATION_VALUE;
 	const VALUE_TYPES 		= require('../Instrucciones/instrucciones').VALUE_TYPES;
@@ -934,7 +937,7 @@ case 67:
 break;
 case 68:return 5;
 break;
-case 69:$$ = errores.nuevoError(errores.error(yy_.yytext, yy_.yylloc.first_line, yy_.yylloc.column)); 
+case 69:$$ = ERRORES.nuevoError(ERRORES.error(yy_.yytext, yy_.yylloc.first_line, yy_.yylloc.column)); 
 break;
 }
 },

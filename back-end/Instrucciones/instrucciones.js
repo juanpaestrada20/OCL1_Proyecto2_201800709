@@ -81,15 +81,15 @@ const ERRORES = {
   createJson: function (file) {
     var fs = require("fs");
     try {
-      fs.writeFileSync("errores.json", JSON.stringify(file, null, 2));
+      fs.writeFileSync("../errores.json", JSON.stringify(file, null, 2));
     } catch (error) {
       console.log(error);
     }
   },
 
   nuevoError: function (error) {
-    e.push(error);
-    return e;
+    errores.push(error);
+    return errores;
   },
 
   error: function (error, fila, columna) {
@@ -405,7 +405,7 @@ const instruccionesAPI = {
         INSTRUCCION: instrucciones,
         LLAVE_CIERRA: "}",
       },
-      ELSE_IF: else_if,
+      ELSE_IF: elseif,
       ELSE: _else,
     };
   },
@@ -462,6 +462,13 @@ const instruccionesAPI = {
         CASOS: casos,
         LLAVE_CIERRA: "}",
       },
+    };
+  },
+
+  nuevoCasos: function (casos, caso) {
+    return {
+      CASOS: casos,
+      CASO: caso,
     };
   },
 
@@ -658,5 +665,6 @@ module.exports.INSTRUCTION_TYPE = INSTRUCTION_TYPE;
 module.exports.VALUE_TYPES = VALUE_TYPES;
 module.exports.instruccionesAPI = instruccionesAPI;
 module.exports.SWITCH_OPTION_TYPE = SWITCH_OPTION_TYPE;
+module.exports.ERRORES = ERRORES;
 
 // El codigo fue inspirado en el ejemplo dado de el Ingeniero Erick Navarro

@@ -1,6 +1,6 @@
 /* GRAMATICA PARA EL LENGUAJE JAVA */
 %{
-        const errores			= require('../Instrucciones/instrucciones').ERRORES; 
+        const ERRORES			= require('../Instrucciones/instrucciones').ERRORES; 
 %}
 
 /*DEFINICION DE ANALIZADOR LEXICIO*/
@@ -112,7 +112,7 @@
 
 <<EOF>>                             return 'EOF';
 
-.                                   {$$ = errores.nuevoError(errores.error(yytext, yylloc.first_line, yylloc.column)); }
+.                                   {$$ = ERRORES.nuevoError(ERRORES.error(yytext, yylloc.first_line, yylloc.column)); }
 
 /lex
 
@@ -146,7 +146,7 @@ INICIO
 ;
 
 INICIOPRIMA
-        : INICIOPRIMA IMPORTACIONES     { $1.push($2); $$ = $1; }
+        : INICIOPRIMA IMPORTACIONES     { $$ = instruccionesAPI.nuevoImports($1, $2); }
         | IMPORTACIONES                 { $$ = $1; }
 ;
 
@@ -165,7 +165,7 @@ CLASE
 ;
 
 CUERPO
-        : CUERPO CUERPOPRIMA    { $1.push($2); $$ = $1; }
+        : CUERPO CUERPOPRIMA    { $$ = instruccionesAPI.nuevoClases($1, $2); }
         | CUERPOPRIMA           { $$ = $1; }  
 ;
 
@@ -184,7 +184,7 @@ DECLARACION
 ;
 
 DECLARACIONPRIMA
-        : ID                    { $$ = $1 }
+        : ID                    { $$ = $1; }
         | ID S_IGUAL EXPRESION  { $$ = instruccionesAPI.nuevoAsignacion($1, $3); }
 ;
 
@@ -273,7 +273,7 @@ SWITCH
 ;
 
 CASES
-        : CASES CASE    { $1.push($2); $$ = $1; }
+        : CASES CASE    { $$ = instruccionesAPI.nuevoCasos($1, $2); }
         | CASE          { $$ = instruccionesAPI.nuevoListaCasos($1); }
 ;
 
@@ -300,8 +300,8 @@ ASIGNACION_FOR
 ;
 
 CAMBIO_VALOR
-        : ID OP_SUMA OP_SUMA    { $$ = instruccionesAPI.operacionUnaria(OPERATION_VALUE.AUMENTO); }
-        | ID OP_RESTA OP_RESTA  { $$ = instruccionesAPI.operacionUnaria(OPERATION_VALUE.DECREMENTO); }
+        : ID OP_SUMA OP_SUMA    { $$ = instruccionesAPI.nuevoOperacionUnaria(OPERATION_VALUE.AUMENTO); }
+        | ID OP_RESTA OP_RESTA  { $$ = instruccionesAPI.nuevoOperacionUnaria(OPERATION_VALUE.DECREMENTO); }
 ;
 
 BREAK
@@ -334,22 +334,22 @@ OP_SIMPLIFICADA
 ;
 
 EXPRESION
-        : OP_RESTA EXPRESION %prec UMENOS	                { $$ = instruccionesAPI.operacionUnaria($2, OPERATION_VALUE.NEGATIVO); }
-	| OP_NOT EXPRESION	                                { $$ = instruccionesAPI.operacionUnaria($2, OPERATION_VALUE.NOT); }
-        | EXPRESION OP_SUMA EXPRESION                           { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.SUMA); }
-        | EXPRESION OP_RESTA EXPRESION	                        { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.RESTA); }
-        | EXPRESION OP_MULTIPLICACION EXPRESION                 { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MULTIPLICACION); }
-        | EXPRESION OP_DIVISION EXPRESION                       { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.DIVISION); }
-	| EXPRESION OP_MODULO EXPRESION                         { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MODULO); }
-	| EXPRESION OP_POTENCIA EXPRESION                       { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.POTENCIA); }
-	| EXPRESION OP_AND EXPRESION	                        { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.AND); }
-	| EXPRESION OP_OR EXPRESION                             { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.OR); }
-	| EXPRESION OP_IGUALIGUAL EXPRESION                     { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.IGUAL_IGUAL); }
-	| EXPRESION OP_DISTINTO EXPRESION                       { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.DISTINTO); }
-	| EXPRESION OP_MENOR S_IGUAL EXPRESION                  { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MENOR_IGUAL); }
-	| EXPRESION OP_MENOR EXPRESION                          { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MENOR_QUE); }
-	| EXPRESION OP_MAYOR S_IGUAL EXPRESION                  { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MAYOR_IGUAL); }
-	| EXPRESION OP_MAYOR EXPRESION                          { $$ = instruccionesAPI.operacionBinaria($1, $3, OPERATION_VALUE.MAYOR_QUE); }
+        : OP_RESTA EXPRESION %prec UMENOS	                { $$ = instruccionesAPI.nuevoOperacionUnaria($2, OPERATION_VALUE.NEGATIVO); }
+	| OP_NOT EXPRESION	                                { $$ = instruccionesAPI.nuevoOperacionUnaria($2, OPERATION_VALUE.NOT); }
+        | EXPRESION OP_SUMA EXPRESION                           { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.SUMA); }
+        | EXPRESION OP_RESTA EXPRESION	                        { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.RESTA); }
+        | EXPRESION OP_MULTIPLICACION EXPRESION                 { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.MULTIPLICACION); }
+        | EXPRESION OP_DIVISION EXPRESION                       { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.DIVISION); }
+	| EXPRESION OP_MODULO EXPRESION                         { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.MODULO); }
+	| EXPRESION OP_POTENCIA EXPRESION                       { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.POTENCIA); }
+	| EXPRESION OP_AND EXPRESION	                        { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.AND); }
+	| EXPRESION OP_OR EXPRESION                             { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.OR); }
+	| EXPRESION OP_IGUALIGUAL EXPRESION                     { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.IGUAL_IGUAL); }
+	| EXPRESION OP_DISTINTO EXPRESION                       { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.DISTINTO); }
+	| EXPRESION OP_MENOR S_IGUAL EXPRESION                  { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.MENOR_IGUAL); }
+	| EXPRESION OP_MENOR EXPRESION                          { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.MENOR_QUE); }
+	| EXPRESION OP_MAYOR S_IGUAL EXPRESION                  { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.MAYOR_IGUAL); }
+	| EXPRESION OP_MAYOR EXPRESION                          { $$ = instruccionesAPI.nuevoOperacionBinaria($1, $3, OPERATION_VALUE.MAYOR_QUE); }
 	| S_PARENTESIS_ABRE EXPRESION S_PARENTESIS_CIERRA       { $$ = $2; }
 	| NUMERO        { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.NUMERO); }
         | PR_TRUE       { $$ = instruccionesAPI.nuevoValor($1, VALUE_TYPES.BOOLEAN); }
